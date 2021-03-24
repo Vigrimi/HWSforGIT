@@ -110,5 +110,44 @@ public class Lesson4HoWorkArrays
         {
             System.out.print(ints4[j-1] + " ");
         }
+        /*5. Создать массив из 11 случайных целых чисел из отрезка [-1;1], вывести массив в консоль.
+        Определить какой элемент встречается в массиве чаще всего и вывести информацию об этом в консоль.*/
+        int[] ints5 = new int[11];
+        int qtyMinusOdin = 0, qtyPlusOdin = 0, qtyZero = 0;
+        for (int i = 0; i < ints5.length; i++)
+        {
+            while (true)
+            {
+                double randomDigit5 = Math.random();
+                randomDigit5 *= 1000;
+                randomDigitInt5 = (int) randomDigit5;
+                if (randomDigit5 >= 3 && randomDigitInt5 < 501) break;
+            }
+            if (randomDigitInt5 >= 3 && randomDigitInt5 <= 175){
+                ints5[i] = -1;
+                qtyMinusOdin++;
+            }
+            else if (randomDigitInt5 >= 176 && randomDigitInt5 <= 350){
+                ints5[i] = 0;
+                qtyZero++;
+            }
+            else if (randomDigitInt5 >= 351 && randomDigitInt5 <= 500){
+                ints5[i] = 1;
+                qtyPlusOdin++;
+            }
+        }
+        System.out.println("\n5. Создать массив из 11 случайных целых чисел из отрезка [-1;1]: " + Arrays.toString(ints5));
+
+        if (qtyMinusOdin == qtyZero && qtyZero == qtyPlusOdin) System.out.println("в массиве чаще всего встречается: все три элемента одинаковое количество раз = " + qtyMinusOdin);
+
+        if (qtyMinusOdin > qtyZero && qtyMinusOdin > qtyPlusOdin) System.out.println("в массиве чаще всего встречается: элемент \"-1\" такое количество раз = " + qtyMinusOdin);
+        if (qtyMinusOdin == qtyZero && qtyMinusOdin > qtyPlusOdin) System.out.println("в массиве чаще всего встречается: элементы \"-1\" и \"0\" такое количество раз = " + qtyMinusOdin);
+        if (qtyMinusOdin > qtyZero && qtyMinusOdin == qtyPlusOdin) System.out.println("в массиве чаще всего встречается: элементы \"-1\" и \"1\" такое количество раз = " + qtyMinusOdin);
+
+        if (qtyZero > qtyMinusOdin && qtyZero > qtyPlusOdin) System.out.println("в массиве чаще всего встречается: элемент \"0\" такое количество раз = " + qtyZero);
+        if (qtyZero > qtyMinusOdin && qtyZero == qtyPlusOdin) System.out.println("в массиве чаще всего встречается: элементы \"0\" и \"1\" такое количество раз = " + qtyZero);
+
+        if (qtyPlusOdin > qtyZero && qtyPlusOdin > qtyMinusOdin) System.out.println("в массиве чаще всего встречается: элемент \"1\" такое количество раз = " + qtyPlusOdin);
+
     }
 }
