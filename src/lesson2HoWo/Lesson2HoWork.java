@@ -65,8 +65,15 @@ public class Lesson2HoWork
                 System.out.println("введённое число 7, результат умножения: " + (firstOper * secondOper));
                 break;
             case 9:
-                System.out.println("введённое число 9, результат деления: " + resDeleniya); //(firstOper / secondOper) + " с остатком " + (firstOper % secondOper));
-                break;
+                if (secondOper == 0)
+                {
+                    System.out.println("введённое число 9, результат деления: на ноль делить нелзя, упс...");
+                    break;
+                } else {
+                    System.out.println("введённое число 9, результат деления: " + resDeleniya); //(firstOper / secondOper) + " с остатком " + (firstOper % secondOper));
+                    break; // на ноль делить нельзя, надо ставить защиту
+                }
+
         }
 
  /*       3. Задача на цикл while
