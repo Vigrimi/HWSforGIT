@@ -27,7 +27,7 @@ public class Lesson5HoWorkStrings
         {
             String elemArrStr1 = scanner.next();
             int a = 0;
-            if (elemArrStr1.equals("exit")) break;
+            if (elemArrStr1.equalsIgnoreCase("exit")) break;
             for (int j = 0; j < arrLength; j++)
             {
                 if (elemArrStr1.equals(arrStr1[j]))
@@ -47,6 +47,8 @@ public class Lesson5HoWorkStrings
 
       /*  2. Найти количество вхождений одной строки в другую.
             Например, строка "дом" встречается в строке "дом домик домой одомашненный" 4 раза */
+        String str2 = "f";
+
 
     }
 }
