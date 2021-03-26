@@ -1,6 +1,7 @@
 package lesson5HoWoStrings;
 
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Lesson5HoWorkStrings
@@ -82,6 +83,16 @@ public class Lesson5HoWorkStrings
 
         /*4. Заменить все буквы в слове на строчные, а первую букву на заглавную
         Например, дано hello, получаем Hello / дано HeLLO, получаем Hello*/
+        System.out.println("\n4. Заменить все буквы в слове на строчные, а первую букву на заглавную.");
+        String inputText = scanner.nextLine();
+        inputText = inputText.toLowerCase();
+        char firstChar = inputText.charAt(0);
+        String firstCharStr = String.valueOf(firstChar);
+        String firstUpperCharStr = firstCharStr.toUpperCase();
+        String output = inputText.replaceFirst(firstCharStr, firstUpperCharStr);
+        System.out.println("Первая буква заменена на заглавную: " + output);
+
+       /* 5. Вводится с клавиатуры массив слов. Определить, сколько слов начинается на определенную букву.*/
 
 
     }
