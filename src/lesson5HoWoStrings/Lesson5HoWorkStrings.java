@@ -93,7 +93,27 @@ public class Lesson5HoWorkStrings
         System.out.println("Первая буква заменена на заглавную: " + output);
 
        /* 5. Вводится с клавиатуры массив слов. Определить, сколько слов начинается на определенную букву.*/
+        System.out.println("\n5. Определить, сколько слов начинается на определенную букву.\n введи эту самую определенную букву: ");
+        String inpLetter = scanner.next();
 
+        System.out.println("введи целое число - кол-во элементов словесного массива: ");
+        double arrLengthDb5 = scanner.nextDouble();
+        int arrLength5 = (int) arrLengthDb5;
+        if (arrLength5 == 0) arrLength5++;
+        else arrLength5 = Math.abs(arrLength5);
 
+        String[] arrStr5 = new String[arrLength5];
+        int qtySovpad = 0;
+        System.out.println("вводи слова, после каждого слова жми Enter\n или пиши все слова в строке через пробел и жми Enter,\n  Выход их программы по слову exit: ");
+        for (int i = 0; i < arrLength5; i++)
+        {
+            String elemArrStr5 = scanner.next();
+                if (elemArrStr5.equalsIgnoreCase("exit")) break;
+            arrStr5[i] = elemArrStr5;
+            char firstLtrInputed = elemArrStr5.charAt(0);
+            String firstLtrInputedStr = String.valueOf(firstLtrInputed);
+                if (inpLetter.equalsIgnoreCase(firstLtrInputedStr)) qtySovpad++;
+        }
+        System.out.println("на определённую букву: " + inpLetter + "/" + inpLetter.toUpperCase() + ", начинается "+ qtySovpad + " слов(-а, -о).");
     }
 }
