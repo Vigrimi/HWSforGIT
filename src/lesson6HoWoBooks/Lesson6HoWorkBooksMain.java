@@ -23,6 +23,7 @@ public class Lesson6HoWorkBooksMain
             books.getQtyPages(); /* ??? */
             books.getTypeYear();
 
+
             Warehouse warehouse = new Warehouse();
             warehouse.setUuid();
 
@@ -30,8 +31,16 @@ public class Lesson6HoWorkBooksMain
             System.out.println(books);
             System.out.println(warehouse);
 
-            //BooksGroup booksGroup = new BooksGroup();
-            //System.out.println(booksGroup);
+            StringBuilder sb = new StringBuilder();
+            sb = sb.append(authorNameAndSurname).append(books).append(warehouse);
+            System.out.println("1516... " + sb);
+            String books1 = sb.toString();
+            //books = books1;
+
+
+            BooksGroup booksGroup = new BooksGroup();
+            booksGroup.addBook(books1); //(booksGroup.arrBooks[i]);
+            System.out.println(booksGroup);
         }
 
 

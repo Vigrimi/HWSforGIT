@@ -9,6 +9,7 @@ public class Books
     public String nameOfBook;
     private int qtyPages;
     private int typeYear;
+
     //Author authorsName = new Author();
     Scanner scanner = new Scanner(System.in);
 

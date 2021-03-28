@@ -6,15 +6,30 @@ import java.util.Objects;
 
 public class BooksGroup
 {
-    Books books;
-    private Books[] arrBooks; //создали массив
-    public void addBook (Book book)
+    //Books books;
+    public String/*Books*/[] arrBooks = new String /*Books*/[20];; //создали массив
+    public void addBook (String /*Books*/ book)
     {
-        arrBooks = new Books[20];
         for (int i = 0; i < 20; i++)
         {
-            arrBooks[i] = books.nameOfBook;
+            if (arrBooks[i] == null)
+            {
+                arrBooks[i] = book;
+                return;
+            } return;
+
+       // arrBooks[] = book;
         }
+        //int i = 0;
+
+          //  i++;
+        //}
     }
 
+    @Override
+    public String toString() {
+        return "BooksGroup{" +
+                "arrBooks=" + Arrays.toString(arrBooks) +
+                '}';
+    }
 }
