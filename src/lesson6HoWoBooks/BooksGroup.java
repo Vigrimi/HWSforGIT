@@ -18,13 +18,7 @@ public class BooksGroup
                 arrBooks[i] = book;
                 return;
             }
-
-       // arrBooks[] = book;
         }
-        //int i = 0;
-
-          //  i++;
-        //}
     }
 
     @Override
