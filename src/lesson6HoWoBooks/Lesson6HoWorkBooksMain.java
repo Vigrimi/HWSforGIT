@@ -33,10 +33,9 @@ public class Lesson6HoWorkBooksMain
 
             StringBuilder sb = new StringBuilder();
             sb = sb.append(authorNameAndSurname).append(books).append(warehouse);
-            System.out.println("1516... " + sb);
+            //System.out.println("1516... " + sb);
             String books1 = sb.toString();
             //books = books1;
-
 
             BooksGroup booksGroup = new BooksGroup();
             booksGroup.addBook(books1); //(booksGroup.arrBooks[i]);
