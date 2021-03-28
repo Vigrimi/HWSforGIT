@@ -8,6 +8,7 @@ public class BooksGroup
 {
     //Books books;
     public String/*Books*/[] arrBooks = new String /*Books*/[20];; //создали массив
+
     public void addBook (String /*Books*/ book)
     {
         for (int i = 0; i < 20; i++)
