@@ -1,11 +1,12 @@
 package lesson6HoWoBooks;
 
 import java.util.Objects;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Books
 {
-    private String nameOfBook;
+    public String nameOfBook;
     private int qtyPages;
     private int typeYear;
     //Author authorsName = new Author();
@@ -49,6 +50,16 @@ public class Books
         if (typeYear < 1 || typeYear > 2021) throw new IllegalArgumentException("год издания < 1 или >2021");
         this.typeYear = typeYear;
     }
+    private Books[] arrBooks; //создали массив
+    public void addBook ()
+    {
+        arrBooks = new Books[20];
+        for (int i = 0; i < 20; i++)
+        {
+            arrBooks[i] = nameOfBook;
+        }
+    }
+
 
     @Override
     public String toString() {
@@ -56,7 +67,13 @@ public class Books
                 "книги '" + nameOfBook + '\'' +
                 ", количество страниц " + qtyPages +
                 ", год издания " + typeYear +
-                ". ";
+                ". " + "\nkkkk " + Arrays.toString(arrBooks);
     }
+
+
+
+
 }
+
+
 

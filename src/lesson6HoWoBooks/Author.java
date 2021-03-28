@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Author
 {
     Scanner scanner = new Scanner(System.in);
-    private String authorNameAndSurname;
+    public String authorNameAndSurname;
 
     //outer:
     public String getAuthorNameAndSurname() {
