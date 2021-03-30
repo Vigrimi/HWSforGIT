@@ -35,7 +35,7 @@ public class BooksGroup
                 {
                     arrBooks[i] = book;
                     return;
-                }
+                } else return;
 
             }
         }
