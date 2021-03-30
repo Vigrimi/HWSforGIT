@@ -16,6 +16,8 @@ public class Lesson6HoWorkCatsMain
             Cat cat = new Cat();
             cat.getNameCat();
             cat.getColourCat();
+            cat.getSpeedCat();
+
 
             System.out.println(mouse);
             System.out.println(cat);

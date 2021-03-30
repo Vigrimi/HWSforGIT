@@ -23,10 +23,16 @@ public class Cat
         return colourCat = arrColourCat[b];
     }
 
+    public int getSpeedCat()
+    {
+        int s = (int) (Math.random() * 100);
+        return speedCat = s;
+    }
+
     @Override
     public String toString() {
         return "Котейка: " +
-                "по имени '" + nameCat + '\'' + "; цвет: " + colourCat +
-                ';';
+                "по имени '" + nameCat + '\'' + "; цвет: " + colourCat + "; скорость: " + speedCat + " км/секунду " +
+                '.';
     }
 }
