@@ -6,14 +6,14 @@ public class Mouse
 
     public double getSpeedMouse() //Double speedMouse
     {
-        int a = (int) (Math.random() * 100);
-        speedMouse = a;
         return speedMouse;
     }
 
     public void setSpeedMouse() //double speedMouse
     {
-        this.speedMouse = speedMouse;
+        int a = (int) (Math.random() * 100);
+        //speedMouse = a;
+        this.speedMouse = a; // = speedMouse;
     }
 
     @Override

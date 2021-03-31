@@ -7,32 +7,48 @@ public class Cat
     private String colourCat;
     private int speedCat;
     private int weightCat;
-    private int qtyCatchedMouses;
 
     public String getNameCat()
     {
+        return nameCat;
+    }
+    public void setNameCat()
+    {
         String[] arrNameCats = new String[] {"ВАСЯ","КОЛЯ","ВАНЯ","ПЕТЯ","МАНЯ","ТОНЯ","КИСА","ГАВ","МЯУ","КИСЬ","БРЫСЬ"};
         int a = (int) (Math.random() * 11);
-        return nameCat = arrNameCats[a];
+        this.nameCat = arrNameCats[a];
     }
 
     public String getColourCat()
     {
+        return colourCat;
+    }
+    public void setColourCat()
+    {
         String[] arrColourCat = new String[] {"КРАСНЫЙ","ОРАНЖЕВЫЙ","ЖЁЛТЫЙ","ЗЕЛЁНЫЙ","ГРАНАТОВЫЙ","СИНИЙ","ФИОЛЕТОВЫЙ","ПОШКАРЯБАННЫЙ"};
         int b = (int) (Math.random() * 8);
-        return colourCat = arrColourCat[b];
+        this.colourCat = arrColourCat[b];
     }
 
     public int getSpeedCat()
     {
+        return speedCat; // = s;
+    }
+    public void setSpeedCat()
+    {
         int s = (int) (Math.random() * 100);
-        return speedCat = s;
+        this.speedCat = s;
     }
 
     public int getWeightCat()
     {
+        return weightCat;
+    }
+
+    public void setWeightCat()
+    {
         int w = (int) (Math.random() * 10);
-        return weightCat = w;
+        this.weightCat = w;
     }
 
     @Override
