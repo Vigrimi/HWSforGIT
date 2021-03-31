@@ -29,10 +29,16 @@ public class Cat
         return speedCat = s;
     }
 
+    public int getWeightCat()
+    {
+        int w = (int) (Math.random() * 10);
+        return weightCat = w;
+    }
+
     @Override
     public String toString() {
         return "Котейка: " +
-                "по имени '" + nameCat + '\'' + "; цвет: " + colourCat + "; скорость: " + speedCat + " км/секунду " +
-                '.';
+                "по имени '" + nameCat + '\'' + "; цвет: " + colourCat + "; скорость: " + speedCat + " км/секунду" +
+                "; весом: " + weightCat + "кг" + '.';
     }
 }
