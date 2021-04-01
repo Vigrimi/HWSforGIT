@@ -20,7 +20,7 @@ public class Direktor
         System.out.println("ОКОНЧАНИЕ ЗАНЯТИЙ!");
     }
 
-    public /*static*/ String getName()
+    public String getName()
     {
         return name;
     }

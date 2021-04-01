@@ -8,10 +8,7 @@ public class Shkola
     private Uchitel[] arrArmyUchiteley;
     private Uchenik[] arrArmyUchenikov;
 
-    //String nameDirektor = Direktor.
-    //Direktor direktor = new Direktor("ff",1);
-    //direktor.name =
-
+    //Direktor direktor = new Direktor(Direktor.getName(), Direktor.getAge());
 
 
     public void generateArrArmyUchiteley()
