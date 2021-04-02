@@ -22,16 +22,16 @@ public class Shkola
         arrArmyUchiteley = new Uchitel[5];
         for (int i = 0; i < arrArmyUchiteley.length; i++)
         {
-            arrArmyUchiteley[i] = new Uchitel("gsfhgf",125,"ytrewq");
+            //Uchitel uchitel = new Uchitel();
+            arrArmyUchiteley[i] = Uchitel.getUchitel(); //uchitel; // new Uchitel("gsfhgf",125,"ytrewq");
         }
     }
 
     @Override
     public String toString() {
-        return "Shkola{" +
-                "\narrArmyUchiteley=" + Arrays.toString(arrArmyUchiteley) +
-                ", \narrArmyUchenikov=" + Arrays.toString(arrArmyUchenikov) +
-                ", \n->" + direktor +
+        return "\n->" + direktor + "\nСостоит из: " +
+                "\nармии учителей: -" + Arrays.toString(arrArmyUchiteley) +
+                ", \nармии учеников: " + Arrays.toString(arrArmyUchenikov) +
                 '.';
     }
 }

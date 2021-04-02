@@ -10,11 +10,14 @@ public class Uchitel extends Direktor
         this.izuchaemPredmet = izuchaemPredmet;
     }
 
-    public Uchitel()
+    public static Uchitel getUchitel() //public Uchitel()
     {
-        name = Randoms.getRandomName(); //setName();
-        age = Randoms.getRandomAge();
-        setIzuchaemPredmet();
+        Uchitel uchitel = new Uchitel(
+                Randoms.getRandomName(),
+                Randoms.getRandomAge(),
+                Randoms.getIzuchaemPredmet()
+        );
+        return uchitel;
     }
 
     public void uchit (Uchenik uchenik)
@@ -22,12 +25,23 @@ public class Uchitel extends Direktor
         System.out.println("УЧИТЕЛЬ УЧИТ ОБУЧАЕМОГО " + uchenik);
     }
 
-    public String getIzuchaemPredmet() {
-        izuchaemPredmet = Randoms.getIzuchaemPredmet();
+    public String getIzuchaemPredmet()
+    {
         return izuchaemPredmet;
     }
 
-    public void setIzuchaemPredmet() {
-        this.izuchaemPredmet = "FIZIKA";
+    public void setIzuchaemPredmet()
+    {
+        //izuchaemPredmet ;
+        this.izuchaemPredmet = Randoms.getIzuchaemPredmet();
+    }
+
+    @Override
+    public String toString() {
+        return "" +
+                "\nимя '" + name + '\'' +
+                ", возраст " + age +
+                ", предмет '" + izuchaemPredmet + '\'' +
+                ' ';
     }
 }
