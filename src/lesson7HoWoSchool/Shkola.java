@@ -8,7 +8,13 @@ public class Shkola
     private Uchitel[] arrArmyUchiteley;
     private Uchenik[] arrArmyUchenikov;
 
-    //Direktor direktor = new Direktor(Direktor.getName(), Direktor.getAge());
+    private Direktor direktor; //свойство
+    public Shkola(Direktor direktor) // конструктор к свойству
+    {
+        this.direktor = direktor;
+    }
+    // Direktor direktor = new Direktor("QWERTY", 123); //(Direktor.getName(name), Direktor.getAge());
+    //direktor.
 
 
     public void generateArrArmyUchiteley()
@@ -16,16 +22,16 @@ public class Shkola
         arrArmyUchiteley = new Uchitel[5];
         for (int i = 0; i < arrArmyUchiteley.length; i++)
         {
-            //arrArmyUchiteley[i] = Uchitel.
+            arrArmyUchiteley[i] = new Uchitel("gsfhgf",125,"ytrewq");
         }
     }
 
     @Override
     public String toString() {
         return "Shkola{" +
-                "arrArmyUchiteley=" + Arrays.toString(arrArmyUchiteley) +
-                ", arrArmyUchenikov=" + Arrays.toString(arrArmyUchenikov) +
-               // ", direktor=" + direktor +
-                '}';
+                "\narrArmyUchiteley=" + Arrays.toString(arrArmyUchiteley) +
+                ", \narrArmyUchenikov=" + Arrays.toString(arrArmyUchenikov) +
+                ", \n->" + direktor +
+                '.';
     }
 }

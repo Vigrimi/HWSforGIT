@@ -10,11 +10,24 @@ public class Uchitel extends Direktor
         this.izuchaemPredmet = izuchaemPredmet;
     }
 
+    public Uchitel()
+    {
+        name = Randoms.getRandomName(); //setName();
+        age = Randoms.getRandomAge();
+        setIzuchaemPredmet();
+    }
+
     public void uchit (Uchenik uchenik)
     {
         System.out.println("УЧИТЕЛЬ УЧИТ ОБУЧАЕМОГО " + uchenik);
     }
 
+    public String getIzuchaemPredmet() {
+        izuchaemPredmet = Randoms.getIzuchaemPredmet();
+        return izuchaemPredmet;
+    }
 
-
+    public void setIzuchaemPredmet() {
+        this.izuchaemPredmet = "FIZIKA";
+    }
 }

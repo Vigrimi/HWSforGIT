@@ -3,8 +3,13 @@ package lesson7HoWoSchool;
 public class Direktor
 {
     public String name;
-    private int age;
+    public int age;
 
+    public Direktor() //конструктор без параметров
+    {
+        setName();
+        setAge();
+    }
     public Direktor(String name, int age) // обязательный конструктор иначе супер не работает
     {
         this.name = name;
@@ -20,15 +25,16 @@ public class Direktor
         System.out.println("ОКОНЧАНИЕ ЗАНЯТИЙ!");
     }
 
+    //public static Direktor getName() //
     public String getName()
     {
         return name;
     }
 
-    public void setName() //String name
+    public void setName()     //public void Direktor setName() //String name
     {
-        name = "IVANOV";
-        this.name = name;
+        //name = "IVANOV";
+        this.name = "IVANOV"; // name;
     }
 
     public int getAge()
@@ -36,17 +42,17 @@ public class Direktor
         return age;
     }
 
-    public void setAge(int age)
+    public void setAge() //(int age)
     {
-        age = 33;
-        this.age = age;
+        //age = 33;
+        this.age = 33;
     }
 
     @Override
     public String toString() {
-        return "Direktor{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+        return "\nНаш директор школы: " +
+                "имя '" + name + '\'' +
+                ", возраст " + age +
+                ';';
     }
 }
