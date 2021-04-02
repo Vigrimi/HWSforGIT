@@ -12,6 +12,11 @@ public class Randoms
         int age = (int) (Math.random() * 81 + 18);
         return age;
     }
+    public static int getRandomAgeUchenik()
+    {
+        int age = (int) (Math.random() * 11 + 7);
+        return age;
+    }
     public static String getIzuchaemPredmet()
     {
         String[] izuchaemPredmet1 = {"ФИЗИКА","ХИМИЯ","РУС.ЯЗ.","МАТЕША","АНГЛ.ЯЗ."};

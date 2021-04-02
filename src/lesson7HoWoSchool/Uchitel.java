@@ -32,8 +32,8 @@ public class Uchitel extends Direktor
 
     public void setIzuchaemPredmet()
     {
-        //izuchaemPredmet ;
-        this.izuchaemPredmet = Randoms.getIzuchaemPredmet();
+       // izuchaemPredmet = getUchitel().getIzuchaemPredmet();
+        this.izuchaemPredmet = getUchitel().getIzuchaemPredmet(); // = Randoms.getIzuchaemPredmet();
     }
 
     @Override

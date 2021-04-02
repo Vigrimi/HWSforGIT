@@ -13,9 +13,6 @@ public class Shkola
     {
         this.direktor = direktor;
     }
-    // Direktor direktor = new Direktor("QWERTY", 123); //(Direktor.getName(name), Direktor.getAge());
-    //direktor.
-
 
     public void generateArrArmyUchiteley()
     {
@@ -26,12 +23,21 @@ public class Shkola
             arrArmyUchiteley[i] = Uchitel.getUchitel(); //uchitel; // new Uchitel("gsfhgf",125,"ytrewq");
         }
     }
+    public void generateArrArmyUchenikov()
+    {
+        arrArmyUchenikov = new Uchenik[5];
+        for (int j = 0; j < arrArmyUchenikov.length; j++)
+        {
+            //Uchitel uchitel = new Uchitel();
+            arrArmyUchenikov[j] = Uchenik.getUchenik(); //uchitel; // new Uchitel("gsfhgf",125,"ytrewq");
+        }
+    }
 
     @Override
     public String toString() {
-        return "\n->" + direktor + "\nСостоит из: " +
+        return "->" + direktor + "\nСостоит из: " +
                 "\nармии учителей: -" + Arrays.toString(arrArmyUchiteley) +
-                ", \nармии учеников: " + Arrays.toString(arrArmyUchenikov) +
+                ", \nармии учеников: " + '\u2708' + " " + Arrays.toString(arrArmyUchenikov) +
                 '.';
     }
 }

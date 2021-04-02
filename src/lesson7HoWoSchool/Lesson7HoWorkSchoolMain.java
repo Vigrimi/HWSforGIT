@@ -9,6 +9,7 @@ public class Lesson7HoWorkSchoolMain
 
         Shkola shkola = new Shkola(direktor);
         shkola.generateArrArmyUchiteley();
+        shkola.generateArrArmyUchenikov();
         System.out.println(shkola);
 
         //System.out.println(direktor);

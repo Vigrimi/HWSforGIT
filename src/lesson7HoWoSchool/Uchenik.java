@@ -11,11 +11,27 @@ public class Uchenik extends Uchitel
         this.urovenZnaniy = urovenZnaniy;
     }
 
+    public static Uchenik getUchenik()
+    {
+        Uchenik uchenik = new Uchenik(
+                Randoms.getRandomName(),
+                Randoms.getRandomAgeUchenik(),
+                Randoms.getIzuchaemPredmet() // Uchitel.getUchitel().izuchaemPredmet //
+        );
+        return uchenik;
+    }
+
     public void uchutsya() // метод: учиться() - уровень знаний ученика повышается
     {
         urovenZnaniy++;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "\n" +
+                "имя '" + name + '\'' +
+                ", возраст " + age +
+                ", изучаемый предмет '" + izuchaemPredmet + '\'' +
+                ' ';
+    }
 }
