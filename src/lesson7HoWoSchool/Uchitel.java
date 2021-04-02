@@ -20,10 +20,10 @@ public class Uchitel extends Direktor
         return uchitel;
     }
 
-    public void uchit (Uchenik uchenik)
-    {
-        System.out.println("УЧИТЕЛЬ УЧИТ ОБУЧАЕМОГО " + uchenik);
-    }
+//    public void uchit (Uchenik uchenik)
+//    {
+//        System.out.println("УЧИТЕЛЬ УЧИТ ОБУЧАЕМОГО " + uchenik);
+//    }
 
     public String getIzuchaemPredmet()
     {

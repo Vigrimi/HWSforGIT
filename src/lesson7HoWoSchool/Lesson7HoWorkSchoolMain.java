@@ -11,7 +11,7 @@ public class Lesson7HoWorkSchoolMain
         shkola.generateArrArmyUchiteley();
         shkola.generateArrArmyUchenikov();
         System.out.println(shkola);
-
+        shkola.dayAtSchool();
         //System.out.println(direktor);
 
     }
