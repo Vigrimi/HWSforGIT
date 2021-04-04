@@ -13,8 +13,8 @@ public class DomashZhivotnye extends AbstrClassZhivotnye
     {
         super(tipZhivotnogo, vesZhivotnogo, skorostZhivotnogo);
         this.zdorovyeZhivotnogo = zdorovyeZhivotnogo;
-        this.flagSyedobnoeZhivotnoe;
-        this.resursZhivotnogo;
+        this.flagSyedobnoeZhivotnoe = flagSyedobnoeZhivotnoe;
+        this.resursZhivotnogo = resursZhivotnogo;
     }
 
     public static DomashZhivotnye[] getDomashZhivotnye() //Домашние животные: Корова, Кот, Курица, Кролик

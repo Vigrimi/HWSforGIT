@@ -7,9 +7,8 @@ public class DikieZhivotnye extends AbstrClassZhivotnye
 
     public DikieZhivotnye(String tipZhivotnogo, int vesZhivotnogo, int skorostZhivotnogo, int silaDikieZhivotnye)
     {
-       // super(tipZhivotnogo);
         super(tipZhivotnogo, vesZhivotnogo, skorostZhivotnogo);
-        //this.silaDikieZhivotnye;
+        this.silaDikieZhivotnye = silaDikieZhivotnye;
     }
 
     public static DikieZhivotnye[] getDikieZhivotnye() //Дикие животные: Волк, Медведь, Лисица.

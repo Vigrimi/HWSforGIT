@@ -9,5 +9,6 @@ public class Fermer
         return "Фермер по имени дядя Петя " +
                 "имеет ресурс: " + resursFermera +
                 '.';
+
     }
 }

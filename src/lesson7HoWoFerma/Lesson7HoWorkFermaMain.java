@@ -12,5 +12,6 @@ public class Lesson7HoWorkFermaMain
         System.out.println("Армия домашних животных состоит из: " + Arrays.toString(DomashZhivotnye.getDomashZhivotnye()));
         System.out.println("Армия ДИКИХ животных состоит из: " + Arrays.toString(DikieZhivotnye.getDikieZhivotnye()));
 
+
     }
 }

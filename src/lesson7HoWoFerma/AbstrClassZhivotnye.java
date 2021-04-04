@@ -20,4 +20,5 @@ abstract public class AbstrClassZhivotnye
             //this.flagSyedobnoeZhivotnoe = flagSyedobnoeZhivotnoe;
             //this.resursZhivotnogo = resursZhivotnogo;
     }
+
 }
