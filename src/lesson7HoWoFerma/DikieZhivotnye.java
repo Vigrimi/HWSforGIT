@@ -20,7 +20,7 @@ public class DikieZhivotnye extends AbstrClassZhivotnye
             //int sedobnost = 1; // 0 = несъедобное
             //if (i == 1) sedobnost = 0;
             int vess = RandomsFerma.getRandomFm1To11();
-            //if (i == 0) skorost = (RandomsFerma.getRandomFm1To11() * 9);
+            if (i == 1) vess = (RandomsFerma.getRandomFm1To11() * 9);
             DikieZhivotnye korova1 = new DikieZhivotnye(dikieZhiv[i], vess, RandomsFerma.getRandomFm1To11(), RandomsFerma.getRandomFm1To11() );
             arrDikieZhivotnyes[i] = korova1;
         }
@@ -31,11 +31,11 @@ public class DikieZhivotnye extends AbstrClassZhivotnye
 
     @Override
     public String toString() {
-        return "DikieZhivotnye{" +
-                "tipZhivotnogo='" + tipZhivotnogo + '\'' +
-                ", vesZhivotnogo=" + vesZhivotnogo +
-                ", skorostZhivotnogo=" + skorostZhivotnogo +
-                ", silaDikieZhivotnye=" + silaDikieZhivotnye +
-                '}';
+        return "\nДикое " +
+                "животное: '" + tipZhivotnogo + '\'' +
+                ", весом (кг) " + vesZhivotnogo +
+                ", со скоростью " + skorostZhivotnogo +
+                ", силой " + silaDikieZhivotnye +
+                ' ';
     }
 }

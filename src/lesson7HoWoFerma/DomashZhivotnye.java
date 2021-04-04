@@ -19,15 +19,17 @@ public class DomashZhivotnye extends AbstrClassZhivotnye
 
     public static DomashZhivotnye[] getDomashZhivotnye() //Домашние животные: Корова, Кот, Курица, Кролик
     {
+        int qty = 10;
         String[] domashZhiv = new String[]{"Корова", "Кот", "Курица", "Кролик"};
-        arrDomashZhivotnyes = new DomashZhivotnye[domashZhiv.length];
-        for (int i = 0; i < domashZhiv.length; i++)
+        arrDomashZhivotnyes = new DomashZhivotnye[qty];
+        for (int i = 0; i < arrDomashZhivotnyes.length; i++)
         {
             int sedobnost = 1; // 0 = несъедобное
-            if (i == 1) sedobnost = 0;
+            String domashZhivElem = domashZhiv[(int) (Math.random() * 4)];
+            if (domashZhivElem.equals("Кот")) sedobnost = 0;
             int vess = RandomsFerma.getRandomFm1To11();
-            if (i == 0) vess = (RandomsFerma.getRandomFm1To11() * 9);
-        DomashZhivotnye korova = new DomashZhivotnye(domashZhiv[i],
+            if (domashZhivElem.equals("Корова")) vess = (RandomsFerma.getRandomFm1To11() * 9);
+        DomashZhivotnye korova = new DomashZhivotnye(domashZhivElem,
                 vess,
                 RandomsFerma.getRandomFm1To11()/*skorostZhivotnogo*/,
                 getZdorovyeZhivotnogo()/*zdorovyeZhivotnogo*/,
