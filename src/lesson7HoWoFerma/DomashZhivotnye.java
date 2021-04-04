@@ -12,7 +12,7 @@ public class DomashZhivotnye extends AbstrClassZhivotnye
     public DomashZhivotnye(String tipZhivotnogo, int vesZhivotnogo, int skorostZhivotnogo, int zdorovyeZhivotnogo, int flagSyedobnoeZhivotnoe, int resursZhivotnogo)
     {
         super(tipZhivotnogo, vesZhivotnogo, skorostZhivotnogo);
-        this.zdorovyeZhivotnogo;
+        this.zdorovyeZhivotnogo = zdorovyeZhivotnogo;
         this.flagSyedobnoeZhivotnoe;
         this.resursZhivotnogo;
     }
