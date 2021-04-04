@@ -1,13 +1,14 @@
 package lesson7HoWoSchool;
 
-public class Uchenik extends Uchitel
+public class Uchenik extends Direktor // Uchitel
 {
-    //private String izuchaemPredmet;
+    public String izuchaemPredmet;
     private int urovenZnaniy;
 
     public Uchenik(String name, int age, String izuchaemPredmet) // обязательный конструктор иначе супер не работает
     {
-        super(name,age,izuchaemPredmet); // из родителя берём - вызов конструктора родителя
+        super(name,age); //,izuchaemPredmet); // из родителя берём - вызов конструктора родителя
+        this.izuchaemPredmet = izuchaemPredmet;
         this.urovenZnaniy = urovenZnaniy;
     }
 
