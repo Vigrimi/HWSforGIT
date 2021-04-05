@@ -28,12 +28,21 @@ public class DomashZhivotnye extends AbstrClassZhivotnye
             String domashZhivElem = domashZhiv[(int) (Math.random() * 4)];
             if (domashZhivElem.equals("Кот")) sedobnost = 0;
             int vess = RandomsFerma.getRandomFm1To11();
-            if (domashZhivElem.equals("Корова")) vess = (RandomsFerma.getRandomFm1To11() * 9);
+            int resurs = RandomsFerma.getRandomFm1To11();
+            if (domashZhivElem.equals("Корова"))
+            {
+                vess = (RandomsFerma.getRandomFm1To11() * 9);
+                resurs = vess;
+            }
+            if (domashZhivElem.equals("Курица"))
+            {
+                resurs = vess;
+            }
         DomashZhivotnye korova = new DomashZhivotnye(domashZhivElem,
                 vess,
                 RandomsFerma.getRandomFm1To11()/*skorostZhivotnogo*/,
                 getZdorovyeZhivotnogo()/*zdorovyeZhivotnogo*/,
-                sedobnost, RandomsFerma.getRandomFm1To11()/*resursZhivotnogo*/);
+                sedobnost, resurs/*resursZhivotnogo*/);
             arrDomashZhivotnyes[i] = korova;
         }
         return arrDomashZhivotnyes;

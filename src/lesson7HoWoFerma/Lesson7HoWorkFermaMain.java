@@ -12,7 +12,7 @@ public class Lesson7HoWorkFermaMain
         System.out.println(fermer);
         System.out.println("Армия домашних животных состоит из: " + Arrays.toString(DomashZhivotnye.getDomashZhivotnye()));
         System.out.println("Армия ДИКИХ животных состоит из: " + Arrays.toString(DikieZhivotnye.getDikieZhivotnye()));
-        System.out.println("На ферме начинается новый день.");
+        //System.out.println("На ферме начинается новый день. Ресурс фермера равен " + );
 
         Scanner scanner = new Scanner(System.in);
         int daNet = 1;
@@ -21,7 +21,8 @@ public class Lesson7HoWorkFermaMain
             FermaZhivet fermaZhivet = new FermaZhivet();
             fermaZhivet.DenFermy();
             //System.out.println(fermaZhivet);
-            System.out.println("День закончился. Следующий день? 1-да, 0 - нет");
+            //fermer.resursFermera += ;
+            System.out.println("\nДень закончился. Следующий день? 1-да, 0 - нет");
             daNet = scanner.nextInt();
         }
 
