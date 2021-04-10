@@ -8,21 +8,25 @@ public class FioAbonenta
     public String nameAbonenta;
     public String surnameAbonenta;
     public static FioAbonenta[] arrAbonenty;
-    public static VidyAbonementov abonement;
+    public VidyAbonementov abonement; //static
     public LocalDateTime nachaloAbonementa;
     public LocalDateTime konetsAbonementa;
+    public String unikNomerAbonementa; //static
 
     public FioAbonenta(String nameAbonenta,
                        String surnameAbonenta,
                        VidyAbonementov abonement,
                        LocalDateTime nachaloAbonementa,
-                       LocalDateTime konetsAbonementa) //конструктор
+                       LocalDateTime konetsAbonementa,
+                       String unikNomerAbonementa) //конструктор
     {
         this.nameAbonenta = nameAbonenta;
         this.surnameAbonenta = surnameAbonenta;
+        //FioAbonenta.abonement = abonement;
         this.abonement = abonement;
         this.nachaloAbonementa = nachaloAbonementa;
         this.konetsAbonementa = konetsAbonementa;
+        this.unikNomerAbonementa = unikNomerAbonementa;
     }
 
     public static FioAbonenta[] getFioAbonenta()
@@ -51,8 +55,9 @@ public class FioAbonenta
             VidyAbonementov abonement = getAbonementFIO();
             LocalDateTime nachaloAbonementa = getNachaloAbonementa();
             LocalDateTime konetsAbonementa = nachaloAbonementa.plusYears(1);
+            String unikNomerAbonementa = getUnikNomerAbonementa();
             FioAbonenta fioAbonenta = new FioAbonenta(nameToArray,
-                    surnameToArray,abonement,nachaloAbonementa,konetsAbonementa);
+                    surnameToArray,abonement,nachaloAbonementa,konetsAbonementa,unikNomerAbonementa);
                     //setNachaloAbonementa(getNachaloAbonementa()));
             arrAbonenty[i] = fioAbonenta;
         } // climber1.setFullName(getFullName);
@@ -73,13 +78,23 @@ public class FioAbonenta
     }
 
     public static VidyAbonementov getAbonementFIO() {
-        VidyAbonementov abonement = Abonement.getAbonement();
-        return abonement;
+        //VidyAbonementov abonement = Abonement.getAbonement();
+        return Abonement.getAbonement(); // abonement;
     }
     //    public static LocalDateTime getKonetsAbonementa() {
 //        LocalDateTime konetsAbonementa = nachaloAbonementa.plusYears(1);
 //        return konetsAbonementa;
 //    }
+
+
+    public static String getUnikNomerAbonementa() {
+        int x= (int) (Math.random() * 10 );
+        int y= (int) (Math.random() * 10 );
+        int z= (int) (Math.random() * 10 );
+        int a = (int) (Math.random() * 10 );
+        String unikNomerAbonementa = "" + x + y + z + a;
+        return unikNomerAbonementa;
+    }
 
     public static LocalDateTime setNachaloAbonementa(LocalDateTime nachaloAbonementa) {
         if (nachaloAbonementa == null) throw new IllegalArgumentException("дата НАЛЛ пачимута((");
@@ -92,7 +107,8 @@ public class FioAbonenta
         return "\n-" +
                 "> " + nameAbonenta +
                 " " + surnameAbonenta + ';' +
-                " вид абонемента: " + abonement + "; начало действия абонемента: " + nachaloAbonementa +
-                ',' + " окончание действия абонемента: " + konetsAbonementa + ".";
+                " вид абонемента: " + abonement.name() + "; начало действия абонемента: " + nachaloAbonementa +
+                ',' + " окончание действия абонемента: " + konetsAbonementa +
+                "; уникальный номер абонемента " + unikNomerAbonementa + ".";
     }
 }
