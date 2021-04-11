@@ -7,29 +7,35 @@ public class FioAbonenta
 {
     public String nameAbonenta;
     public String surnameAbonenta;
-    public static FioAbonenta[] arrAbonenty;
+    public int godRozhdeniya;
+    //public  FioAbonenta[] arrAbonenty; //static
+    public  FioAbonenta fioAbonenta;
     public VidyAbonementov abonement; //static
     public LocalDateTime nachaloAbonementa;
     public LocalDateTime konetsAbonementa;
     public String unikNomerAbonementa; //static
+    public int gdeNahoditsyaAbonent; // 0-nigde, 1-v basseyne, 2-v trenazherke, 3-v zale gruppovyh
 
     public FioAbonenta(String nameAbonenta,
                        String surnameAbonenta,
+                       int godRozhdeniya,
                        VidyAbonementov abonement,
                        LocalDateTime nachaloAbonementa,
                        LocalDateTime konetsAbonementa,
-                       String unikNomerAbonementa) //конструктор
+                       String unikNomerAbonementa,
+                       int gdeNahoditsyaAbonent) //конструктор
     {
         this.nameAbonenta = nameAbonenta;
         this.surnameAbonenta = surnameAbonenta;
-        //FioAbonenta.abonement = abonement;
+        this.godRozhdeniya = godRozhdeniya;
         this.abonement = abonement;
         this.nachaloAbonementa = nachaloAbonementa;
         this.konetsAbonementa = konetsAbonementa;
         this.unikNomerAbonementa = unikNomerAbonementa;
+        this.gdeNahoditsyaAbonent = gdeNahoditsyaAbonent;
     }
 
-    public static FioAbonenta[] getFioAbonenta()
+    public static FioAbonenta getFioAbonenta() //static
     {
         String[] arrNames = {"Алан","Александр","Алексей","Альберт","Альфред","Анатолий","Бернар","Богдан","Боголюб",
                 "Болеслав","Бонифаций","Борис","Борислав","Варвара","Василиса","Венера","Вера","Вероника","Веселина",
@@ -46,22 +52,25 @@ public class FioAbonenta
                 "ЕВТИН","ЕВТИФЕЕВ","КАЗЫМОВ","КАЗЮКОВ","КАИРЕВ","КАИРОВ","ЛАЗЛОВ","ЛАЗОРЕНКО","ЛАЗУКИН","ЛАЗУНИН","ЛАНОВОЙ","ЛАНСКИХ",
                 "ЛАНСКОВ","МАКАРЕВИЧ","МАКАРЕНКО","МАКАРЕНКОВ","НАЛЕТОВ","НАЛИМОВ","НАМАЗОВ","НАМЕТКИН","ОВСЯНОВ","ОВТУХОВ","ПАКШИН","ПАЛАГИН"};
         int qtyArrSurnames = arrSurnames.length;
-        int qtyAbonentov = 45;
-        arrAbonenty = new FioAbonenta[qtyAbonentov];
-        for (int i = 0; i < arrAbonenty.length; i++)
-        {
-            String nameToArray = arrNames[(int) (Math.random() * 56)];
-            String surnameToArray = arrSurnames[(int) (Math.random() * 56)];
+        //int qtyAbonentov = 45;
+        //FioAbonenta fioAbonenta = new FioAbonenta; //[qtyAbonentov]; // FioAbonenta[]
+//        for (int i = 0; i < arrAbonenty.length; i++)
+//        {
+            //String nameToArray
+            String nameAbonenta = arrNames[(int) (Math.random() * 56)];
+            String surnameAbonenta = arrSurnames[(int) (Math.random() * 56)];
+            int godRozhdeniya = getGodRozhdeniya();
             VidyAbonementov abonement = getAbonementFIO();
             LocalDateTime nachaloAbonementa = getNachaloAbonementa();
             LocalDateTime konetsAbonementa = nachaloAbonementa.plusYears(1);
             String unikNomerAbonementa = getUnikNomerAbonementa();
-            FioAbonenta fioAbonenta = new FioAbonenta(nameToArray,
-                    surnameToArray,abonement,nachaloAbonementa,konetsAbonementa,unikNomerAbonementa);
-                    //setNachaloAbonementa(getNachaloAbonementa()));
-            arrAbonenty[i] = fioAbonenta;
-        } // climber1.setFullName(getFullName);
-        return arrAbonenty;
+            int gdeNahoditsyaAbonent = 0;
+            FioAbonenta fioAbonenta = new FioAbonenta(nameAbonenta,
+                    surnameAbonenta,godRozhdeniya,abonement,nachaloAbonementa,
+                    konetsAbonementa,unikNomerAbonementa,gdeNahoditsyaAbonent);
+//            arrAbonenty[i] = fioAbonenta;
+//        }
+        return fioAbonenta;
     }
 
     public void setNameAbonenta(String nameAbonenta) {
@@ -76,7 +85,10 @@ public class FioAbonenta
         LocalDateTime nachaloAbonementa = Randoms.getDateTime();
         return nachaloAbonementa;
     }
-
+    public static int getGodRozhdeniya() {
+        int godRozhdeniya = Randoms.getRandomGodRozhdeniya();
+        return godRozhdeniya;
+    }
     public static VidyAbonementov getAbonementFIO() {
         //VidyAbonementov abonement = Abonement.getAbonement();
         return Abonement.getAbonement(); // abonement;
@@ -106,9 +118,14 @@ public class FioAbonenta
     public String toString() {
         return "\n-" +
                 "> " + nameAbonenta +
-                " " + surnameAbonenta + ';' +
-                " вид абонемента: " + abonement.name() + "; начало действия абонемента: " + nachaloAbonementa +
+                " " + surnameAbonenta + ';' + " год рождения " + godRozhdeniya +
+                "; вид абонемента: " + abonement.name() + "; начало действия абонемента: " + nachaloAbonementa +
                 ',' + " окончание действия абонемента: " + konetsAbonementa +
-                "; уникальный номер абонемента " + unikNomerAbonementa + ".";
+                "; уникальный номер абонемента " + unikNomerAbonementa +
+                "; сейчас находится: " +
+                ((gdeNahoditsyaAbonent == 0) ? "ни в каком из спортзалов" :
+                        ( (gdeNahoditsyaAbonent == 1) ? "в бассейне" :
+                                ( (gdeNahoditsyaAbonent == 2) ? "в тренажёрном зале" :
+                                        /*( (gdeNahoditsyaAbonent == 3) ?*/ "в зале групповых занятий" /* ) */ ) ) ) + ".";
     }
 }

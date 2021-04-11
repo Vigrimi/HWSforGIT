@@ -2,7 +2,7 @@ package lesson7HoWoFerma;
 
 public interface DelaNaFerme
 {
-    default void SoberiResursy(DomashZhivotnye[] domashZhivotnyes, DikieZhivotnye[] dikieZhivotnyes, int resursDlyaFermera)
+        default void SoberiResursy(DomashZhivotnye[] domashZhivotnyes, DikieZhivotnye[] dikieZhivotnyes, int resursDlyaFermera)
     //домашние животные, которые дают ресурсы:  Корова, Курица
     {
         resursDlyaFermera = 0;
