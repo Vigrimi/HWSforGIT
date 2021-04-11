@@ -10,7 +10,9 @@ public class Fitness implements KtonGde
     public static FioAbonenta[] arrAbonentyZalGruppovZanyatiya;
     public  FioAbonenta[] arrNePopal;
     public int maxQtyLyudeyBassein;
-    public static int qtyAbonentov = 45;
+    public int maxQtyLyudeyTrenazher;
+    public int maxQtyLyudeyGruppZanyatiya;
+    public static int qtyAbonentov = 55;
     public static int randomNomerArrAbonenty;
     public int seichasVBasseine;
     public int seichasVZalTrenazher;
@@ -19,6 +21,8 @@ public class Fitness implements KtonGde
     public Fitness() // (int maxQtyLyudeyBassein)
     {
         this.maxQtyLyudeyBassein = ZalBasseyn.maxQtyLyudeyBassein;
+        this.maxQtyLyudeyTrenazher = ZalTrenazher.maxQtyLyudeyTrenazher;
+        this.maxQtyLyudeyGruppZanyatiya = ZalGruppovZanyatiya.maxQtyLyudeyGruppZanyatiya;
     }
 
     public void DelaNaFitnese()
@@ -26,8 +30,8 @@ public class Fitness implements KtonGde
         generateArrFioAbonenta();
         System.out.println("\nВ фитнесс-центре зарегистрированны следующие абоненты возрастом " +
                 "более 16 лет и менее 120 лет:  " + Arrays.toString(arrAbonenty));
-        System.out.println("Наш фитнесс-центр работает с 8 до 22 часов каждый день недели. " +
-                "\nНа часах 07ч 59минут и фитнесс-центр готов распахнуть свои двери. " +
+        System.out.println("\nНаш фитнесс-центр работает с 8 до 22 часов каждый день недели. " +
+                "\nНа часах 07ч 59минут и фитнесс-центр готов распахнуть свои двери. :p)" +
                 "\nПогнали? 8- да; 9-нет");
 //        generateArrAbonentyZalBasseyn();
 //        System.out.println("\nФитнесс-центр открыт и абоненты расходятся по секциям: ");
@@ -51,6 +55,7 @@ public class Fitness implements KtonGde
                                 /*( (gdeNahoditsyaAbonent == 3) ?*/ " зал групповых занятий" /* ) */ ) ) + ".");
         //seichasVBasseine = ZalBasseyn.getSeichasVBasseine();
         //System.out.println("проверка seichasVBasseine " + seichasVBasseine);
+    // БАССЕЙН
         if (kudaHochetAbonent == 1) // 0-nigde, 1-v basseyne, 2-v trenazherke, 3-v zale gruppovyh
         {
             System.out.println("Сейчас в бассейне " + seichasVBasseine + " человек.");
@@ -59,12 +64,118 @@ public class Fitness implements KtonGde
                 System.out.println("Сейчас в бассейне находится максимально разрешённое количество " +
                         "посетителей = " + maxQtyLyudeyBassein + " человек.");
             }
-        } else if (kudaHochetAbonent == 2)
+            else if (seichasVBasseine < maxQtyLyudeyBassein)
+            {
+                if(arrAbonenty[randomNomerArrAbonenty].abonement.getBasseinDaNet() != 1)
+                {
+                    System.out.println("По данному виду абонемента нельзя попасть в бассейн.");
+                }
+                else if(arrAbonenty[randomNomerArrAbonenty].abonement.getBasseinDaNet() == 1)
+                {
+                    System.out.println("По данному виду абонемента можно попасть в бассейн.");
+                    if (arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent == 1)
+                        System.out.println("ОШИБКА производимых действий!! Абонент с данным абонементом " +
+                                "уже находится в бассейне и не может быть одновременно в двух местах!");
+                    else if (arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent == 2)
+                        System.out.println("ОШИБКА производимых действий!! Абонент с данным абонементом " +
+                                "уже находится в тренажёрном зале и не может быть одновременно в двух местах!");
+                    else if (arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent == 3)
+                        System.out.println("ОШИБКА производимых действий!! Абонент с данным абонементом " +
+                                "уже находится в зале групповых занятий и не может быть одновременно в двух местах!");
+                    else if (arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent == 0)
+                    {
+                        System.out.println("Абонент " + arrAbonenty[randomNomerArrAbonenty].nameAbonenta + " " +
+                                arrAbonenty[randomNomerArrAbonenty].surnameAbonenta + ", ID абонемента " +
+                                arrAbonenty[randomNomerArrAbonenty].unikNomerAbonementa +
+                                ", вид абонемента " + arrAbonenty[randomNomerArrAbonenty].abonement.name() +
+                                " пошёл заниматься в бассейн.");
+                        arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent = 1;
+                        seichasVBasseine = ZalBasseyn.getSeichasVBasseine();
+                    }
+                }
+            }
+        }
+
+    // ТРЕНАЖЁРКА
+        else if (kudaHochetAbonent == 2) // 0-nigde, 1-v basseyne, 2-v trenazherke, 3-v zale gruppovyh
         {
             System.out.println("Сейчас в тренажёрном зале " + seichasVZalTrenazher + " человек." );
-        } else if (kudaHochetAbonent == 3)
+            if (seichasVZalTrenazher == maxQtyLyudeyTrenazher)
+            {
+                System.out.println("Сейчас в тренажёрном зале находится максимально разрешённое количество " +
+                        "посетителей = " + maxQtyLyudeyTrenazher + " человек.");
+            }
+            else if (seichasVZalTrenazher < maxQtyLyudeyTrenazher)
+            {
+                if(arrAbonenty[randomNomerArrAbonenty].abonement.getTrenazhZalDaNet() != 1)
+                {
+                    System.out.println("По данному виду абонемента нельзя попасть в тренажёрный зал.");
+                }
+                else if(arrAbonenty[randomNomerArrAbonenty].abonement.getTrenazhZalDaNet() == 1)
+                {
+                    System.out.println("По данному виду абонемента можно попасть в тренажёрный зал.");
+                    if (arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent == 1)
+                        System.out.println("ОШИБКА производимых действий!! Абонент с данным абонементом " +
+                                "уже находится в бассейне и не может быть одновременно в двух местах!");
+                    else if (arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent == 2)
+                        System.out.println("ОШИБКА производимых действий!! Абонент с данным абонементом " +
+                                "уже находится в тренажёрном зале и не может быть одновременно в двух местах!");
+                    else if (arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent == 3)
+                        System.out.println("ОШИБКА производимых действий!! Абонент с данным абонементом " +
+                                "уже находится в зале групповых занятий и не может быть одновременно в двух местах!");
+                    else if (arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent == 0)
+                    {
+                        System.out.println("Абонент " + arrAbonenty[randomNomerArrAbonenty].nameAbonenta + " " +
+                                arrAbonenty[randomNomerArrAbonenty].surnameAbonenta + ", ID абонемента " +
+                                arrAbonenty[randomNomerArrAbonenty].unikNomerAbonementa +
+                                ", вид абонемента " + arrAbonenty[randomNomerArrAbonenty].abonement.name() +
+                                " пошёл заниматься в тренажёрный зал.");
+                        arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent = 2;
+                        seichasVZalTrenazher = ZalTrenazher.getSeichasVZalTrenazher();
+                    }
+                }
+            }
+        }
+
+    // ГРУППОВЫЕ
+        else if (kudaHochetAbonent == 3) // 0-nigde, 1-v basseyne, 2-v trenazherke, 3-v zale gruppovyh
         {
-            System.out.println("Сейчас в зале групповых занятий " + seichasVZalTrenazher + " человек.");
+            System.out.println("Сейчас в зале групповых занятий " + seichasVZalGruppovZanyatiya + " человек.");
+            if (seichasVZalGruppovZanyatiya == maxQtyLyudeyGruppZanyatiya)
+            {
+                System.out.println("Сейчас в зале групповых занятий находится максимально разрешённое количество " +
+                        "посетителей = " + maxQtyLyudeyGruppZanyatiya + " человек.");
+            }
+            else if (seichasVZalGruppovZanyatiya < maxQtyLyudeyGruppZanyatiya)
+            {
+                if(arrAbonenty[randomNomerArrAbonenty].abonement.getGruppZanyatDaNet() != 1)
+                {
+                    System.out.println("По данному виду абонемента нельзя попасть в зал групповых занятий.");
+                }
+                else if(arrAbonenty[randomNomerArrAbonenty].abonement.getGruppZanyatDaNet() == 1)
+                {
+                    System.out.println("По данному виду абонемента можно попасть в зал групповых занятий.");
+                    if (arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent == 1)
+                        System.out.println("ОШИБКА производимых действий!! Абонент с данным абонементом " +
+                                "уже находится в бассейне и не может быть одновременно в двух местах!");
+                    else if (arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent == 2)
+                        System.out.println("ОШИБКА производимых действий!! Абонент с данным абонементом " +
+                                "уже находится в тренажёрном зале и не может быть одновременно в двух местах!");
+                    else if (arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent == 3)
+                        System.out.println("ОШИБКА производимых действий!! Абонент с данным абонементом " +
+                                "уже находится в зале групповых занятий и не может быть одновременно в двух местах!");
+                    else if (arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent == 0)
+                    {
+                        System.out.println("Абонент " + arrAbonenty[randomNomerArrAbonenty].nameAbonenta + " " +
+                                arrAbonenty[randomNomerArrAbonenty].surnameAbonenta + ", ID абонемента " +
+                                arrAbonenty[randomNomerArrAbonenty].unikNomerAbonementa +
+                                ", вид абонемента " + arrAbonenty[randomNomerArrAbonenty].abonement.name() +
+                                " пошёл заниматься в зале групповых занятий.");
+                        arrAbonenty[randomNomerArrAbonenty].gdeNahoditsyaAbonent = 3;
+                        seichasVZalGruppovZanyatiya = ZalGruppovZanyatiya.getSeichasVZalGruppovZanyatiya();
+                    }
+                }
+            }
         }
 
     }
@@ -73,11 +184,7 @@ public class Fitness implements KtonGde
         int randomNomerArrAbonenty = (int) ( Math.random() * qtyAbonentov );
         return randomNomerArrAbonenty;
     }
-//    public static FioAbonenta generateRandomAbonent() //void
-//    {
-//        getRandomNomerArrAbonenty();
-//        FioAbonenta randomFioabonenta = arr;
-//    }
+
     public void generateArrFioAbonenta()
     {
         arrAbonenty = new FioAbonenta[qtyAbonentov];
@@ -87,19 +194,22 @@ public class Fitness implements KtonGde
         }
     }
 
-    public void generateArrAbonentyZalBasseyn()
+    public void generateArrAbonentyKtoGde()
     {
-        ZalBasseyn zalBasseyn = new ZalBasseyn();
+        /*ZalBasseyn zalBasseyn = new ZalBasseyn();
         int a = zalBasseyn.getGdeNahoditsyaAbonent();
         int b = zalBasseyn.getMaxQtyLyudeyBassein();
         int c = Randoms.getRandomFm12To26();
         int d = 1;
         if (c > b) d = c - b;
         arrAbonentyZalBasseyn = new FioAbonenta[maxQtyLyudeyBassein];
-        arrNePopal = new FioAbonenta[d];
-        ktoChemZanimaetsya(this.arrAbonenty,this.arrAbonentyZalBasseyn,this.arrNePopal,a,b,c);
+        arrNePopal = new FioAbonenta[d];*/
+        ktoChemZanimaetsya(this.arrAbonenty); //(this.arrAbonenty,this.arrAbonentyZalBasseyn,this.arrNePopal,a,b,c);
     }
-
+    public void generateVseUhodyatNaNoch()
+    {
+        vseUhodyatNaNoch(this.arrAbonenty); //(this.arrAbonenty,this.arrAbonentyZalBasseyn,this.arrNePopal,a,b,c);
+    }
     public static FioAbonenta[] getArrAbonentyZalTrenazher() {
         return arrAbonentyZalTrenazher;
     }
