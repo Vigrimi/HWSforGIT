@@ -62,7 +62,7 @@ public class Fitness implements KtonGde
             if (seichasVBasseine == maxQtyLyudeyBassein)
             {
                 System.out.println("Сейчас в бассейне находится максимально разрешённое количество " +
-                        "посетителей = " + maxQtyLyudeyBassein + " человек.");
+                        "посетителей = " + maxQtyLyudeyBassein + " человек. Поэтому в доступе отказано. ");
             }
             else if (seichasVBasseine < maxQtyLyudeyBassein)
             {
@@ -103,7 +103,7 @@ public class Fitness implements KtonGde
             if (seichasVZalTrenazher == maxQtyLyudeyTrenazher)
             {
                 System.out.println("Сейчас в тренажёрном зале находится максимально разрешённое количество " +
-                        "посетителей = " + maxQtyLyudeyTrenazher + " человек.");
+                        "посетителей = " + maxQtyLyudeyTrenazher + " человек. Поэтому в доступе отказано. ");
             }
             else if (seichasVZalTrenazher < maxQtyLyudeyTrenazher)
             {
@@ -144,7 +144,7 @@ public class Fitness implements KtonGde
             if (seichasVZalGruppovZanyatiya == maxQtyLyudeyGruppZanyatiya)
             {
                 System.out.println("Сейчас в зале групповых занятий находится максимально разрешённое количество " +
-                        "посетителей = " + maxQtyLyudeyGruppZanyatiya + " человек.");
+                        "посетителей = " + maxQtyLyudeyGruppZanyatiya + " человек. Поэтому в доступе отказано. ");
             }
             else if (seichasVZalGruppovZanyatiya < maxQtyLyudeyGruppZanyatiya)
             {
