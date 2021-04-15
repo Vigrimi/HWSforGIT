@@ -16,7 +16,7 @@ public class Lesson10HoWorkDateTimeMain
                 .ofPattern("dd MMMM yyyy.");
         DateTimeFormatter formatterTime = DateTimeFormatter.ofPattern("HH часов mm минут.");
 
-        System.out.println("\nДата " + formatterDate.format(nowMoscow));
+        System.out.println("\nЗадача 1.\nДата " + formatterDate.format(nowMoscow));
         ZonedDateTime msk = nowMoscow.atZone(ZoneId.of("Europe/Moscow"));
         System.out.println("Сейчас время московское: " + formatterTime.format(msk));
         ZonedDateTime sydney = msk.withZoneSameInstant(ZoneId.of("Australia/Sydney"));
@@ -42,7 +42,17 @@ public class Lesson10HoWorkDateTimeMain
         ZonedDateTime washingtonVylet = washingtonPrilet.plusHours(1).plusMinutes(10);
         System.out.println("Время ожидания в аэропорту Вашингтона - 1 час 10 минут. Самолёт вылетает. Время по Вашингтонy "
                 + formatterTime.format(washingtonVylet));
+        System.out.println("Время в пути Вашингтон - Оттава - 1 час 40 минут.");
+        ZonedDateTime washingtonPriletOttawa = washingtonVylet.plusHours(1).plusMinutes(40);
+        System.out.println("Самолет прилетел в Оттавy: " + formatterDate.format(washingtonPriletOttawa) +
+                " Время по Вашингтонy " + formatterTime.format(washingtonPriletOttawa));
+        ZonedDateTime ottawaPrilet = washingtonPriletOttawa.withZoneSameInstant(ZoneId.of("America/Toronto"));
+        System.out.println("Самолет прилетел в Оттавy: " + formatterDate.format(ottawaPrilet) +
+                " Время по Оттавe " + formatterTime.format(ottawaPrilet));
+        System.out.println("Задача 1.\nTHE END ");
 
+        ///////////////////////////////////////////////////////////////////////////////
+        /*Задача 2*/
 
 
     }
