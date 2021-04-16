@@ -2,6 +2,9 @@ package lesson10HoWoDateTime;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Lesson10HoWorkDateTimeMain
 {
@@ -53,6 +56,48 @@ public class Lesson10HoWorkDateTimeMain
 
         ///////////////////////////////////////////////////////////////////////////////
         /*Задача 2*/
+        LocalTime nowTime = LocalTime.now();
+        LocalTime sevenOclock = LocalTime.of(07, 00, 00);
+        LocalTime fifteenOclock = LocalTime.of(15, 00, 00);
+        LocalTime twentyThreeOclock = LocalTime.of(23, 00, 00);
+        //System.out.println("Сейчас время московское: " + formatterTime.format(sevenOclock));
+        System.out.println("\nЗадача 2. \nЕсть три рабочие смены :\n" +
+                "с 7:00 до 15:00 утренняя;\n" +
+                "с 15:00 до 23:00 дневная;\n" +
+                "с 23:00 до 7:00 ночная.\n");
+        if (nowTime.isAfter(sevenOclock) && nowTime.isBefore(fifteenOclock))
+            System.out.println("Сейчас УТРЕННЯЯ смена, так как на часах: " + formatterTime.format(nowTime));
+        else if (nowTime.isAfter(fifteenOclock) && nowTime.isBefore(twentyThreeOclock))
+            System.out.println("Сейчас ДНЕВНАЯ смена, так как на часах: " + formatterTime.format(nowTime));
+        else System.out.println("Сейчас НОЧНАЯ смена, так как на часах: " + formatterTime.format(nowTime));
+        System.out.println("Задача 2.\nTHE END ");
+
+        ///////////////////////////////////////////////////////////////////////////////
+        /*Задача 3
+        Допустим, наше последнее занятие состоится 16 июня 2021 года.*/
+        LocalDateTime june162021 = LocalDateTime.of(2021,Month.JUNE,16,10,00);
+        //LocalDateTime monday = LocalDateTime.of(2021,Month.MARCH,1,10,00);
+        LocalDateTime atNow = LocalDateTime.now();
+        System.out.println("81->  " + atNow.getDayOfWeek());
+        int qtyMon = 0, qtyWed = 0, qtyFri = 0;
+        long between = ChronoUnit.DAYS.between(atNow, june162021);
+        System.out.println("82->  " + between);
+        long delta = between % 7;
+        System.out.println("84->  " + delta);
+        for (long i = 0; i < between; i++)
+        {
+            if (atNow.getDayOfWeek().equals("MONDAY")) qtyMon++;
+            else if (atNow.getDayOfWeek().equals("WEDNESDAY")) qtyWed++;
+            else if (atNow.getDayOfWeek().equals("FRIDAY")) qtyFri++;
+            atNow = atNow.plusDays(1);
+        }
+
+        /*Calendar someCalendarNow = new GregorianCalendar();
+        someCalendarNow.set(Calendar.DAY_OF_MONTH, 16);
+        someCalendarNow.set(Calendar.MONTH,4);
+        someCalendarNow.set(Calendar.YEAR, 2021);
+       // someCalendarNow.set(Calendar.APRIL,16);
+        System.out.println("someCalendar " + someCalendarNow);*/
 
 
     }
