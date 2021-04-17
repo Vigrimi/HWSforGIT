@@ -3,8 +3,7 @@ package lesson10HoWoDateTime;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import static java.time.DayOfWeek.*;
 
 public class Lesson10HoWorkDateTimeMain
 {
@@ -76,29 +75,25 @@ public class Lesson10HoWorkDateTimeMain
         /*Задача 3
         Допустим, наше последнее занятие состоится 16 июня 2021 года.*/
         LocalDateTime june162021 = LocalDateTime.of(2021,Month.JUNE,16,10,00);
-        //LocalDateTime monday = LocalDateTime.of(2021,Month.MARCH,1,10,00);
+        System.out.println("\nЗадача 3. Допустим, наше последнее занятие состоится 16 июня 2021 года " +
+                "(" + june162021.getDayOfWeek() + ").");
         LocalDateTime atNow = LocalDateTime.now();
-        System.out.println("81->  " + atNow.getDayOfWeek());
+        System.out.println("Сегодня дата: " + formatterDate.format(atNow));
         int qtyMon = 0, qtyWed = 0, qtyFri = 0;
         long between = ChronoUnit.DAYS.between(atNow, june162021);
-        System.out.println("82->  " + between);
-        long delta = between % 7;
-        System.out.println("84->  " + delta);
-        for (long i = 0; i < between; i++)
+        for (long i = 0; i <= (between + 1); i++)
         {
-            if (atNow.getDayOfWeek().equals("MONDAY")) qtyMon++;
-            else if (atNow.getDayOfWeek().equals("WEDNESDAY")) qtyWed++;
-            else if (atNow.getDayOfWeek().equals("FRIDAY")) qtyFri++;
+            if (atNow.getDayOfWeek().compareTo(MONDAY) == 0) qtyMon++;
+            else if (atNow.getDayOfWeek().compareTo(WEDNESDAY) == 0) qtyWed++;
+            else if (atNow.getDayOfWeek().compareTo(FRIDAY) == 0) qtyFri++;
             atNow = atNow.plusDays(1);
         }
-
-        /*Calendar someCalendarNow = new GregorianCalendar();
-        someCalendarNow.set(Calendar.DAY_OF_MONTH, 16);
-        someCalendarNow.set(Calendar.MONTH,4);
-        someCalendarNow.set(Calendar.YEAR, 2021);
-       // someCalendarNow.set(Calendar.APRIL,16);
-        System.out.println("someCalendar " + someCalendarNow);*/
-
-
+        System.out.println("Занятия проходят 3 раза в неделю (пн, ср, пт). \nДо назначенной " +
+                "даты осталось: " + qtyMon + " понедельников, " + qtyWed + " сред, " +
+                qtyFri + " пятниц. \nИтого, всего в сумме понедельников, сред и " +
+                "пятниц, в количестве = " + (qtyFri + qtyWed + qtyMon) + " шт.");
+        System.out.println("На подготовку диплома дается 2 недели после последнего занятия, защита " +
+                "диплома состоится " + formatterDate.format(june162021.plusWeeks(2)));
+        System.out.println("Задача 3.\nTHE END ");
     }
 }
