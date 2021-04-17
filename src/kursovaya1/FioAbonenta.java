@@ -9,7 +9,7 @@ public class FioAbonenta
     public String surnameAbonenta;
     public int godRozhdeniya;
     //public  FioAbonenta[] arrAbonenty; //static
-    public  FioAbonenta fioAbonenta;
+    //public  FioAbonenta fioAbonenta;
     public VidyAbonementov abonement; //static
     public LocalDateTime nachaloAbonementa;
     public LocalDateTime konetsAbonementa;
