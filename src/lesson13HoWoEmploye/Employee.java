@@ -1,6 +1,7 @@
 package lesson13HoWoEmploye;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Employee
@@ -12,7 +13,7 @@ public class Employee
 
     // TODO: конструктор, геттеры и сеттеры
 
-    //public Employee(){}
+    public Employee(){}
     public Employee(String name, String company, int salary, int age)
     {
         this.name = name;
@@ -43,7 +44,7 @@ public class Employee
 
     public static String getName(String[] names) {
         String name = names[(int) (Math.random() * names.length)];
-        return name; // = names[(int) (Math.random() * names.length)];
+        return name;
     }
 
     public void setName(String name) {
@@ -80,10 +81,40 @@ public class Employee
     @Override
     public String toString() {
         return "Employee{" +
-                "name='" + name + '\'' +
-                ", company='" + company + '\'' +
-                ", salary=" + salary +
-                ", age=" + age +
+                " ИМЯ='" + name + '\'' +
+                ", КОМПАНИЯ='" + company + '\'' +
+                ", З/П=" + salary +
+                ", ВОЗРАСТ=" + age +
                 '}';
     }
+
+    public static class NameComparator implements Comparator<Employee>
+    {
+        @Override
+        public int compare(Employee o1, Employee o2) {
+            return o1.name.compareToIgnoreCase(o2.name); // сравниваем по имени
+        }
+    }
+    public static class SalaryComparator implements Comparator<Employee>
+    {
+        @Override
+        public int compare(Employee o1, Employee o2) {
+            return Integer.compare(o1.salary,o2.salary);
+        }
+    }
+    public static class AgeComparator implements Comparator<Employee>
+    {
+        @Override
+        public int compare(Employee o1, Employee o2) {
+            return Integer.compare(o1.age,o2.age);
+        }
+    }
+    public static class CompanyComparator implements Comparator<Employee>
+    {
+        @Override
+        public int compare(Employee o1, Employee o2) {
+            return o1.company.compareToIgnoreCase(o2.company); // сравниваем по имени
+        }
+    }
+
 }
