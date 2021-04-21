@@ -16,7 +16,18 @@ public class MapTask {
         return arrListLoginov;
     }
 
-    public static void main(String[] args) {
+    public static HashMap<String, Integer> getQtyOdinakSlov (List<String> arrayList)
+    {
+        HashMap<String, Integer> hmQtyOdinakSlov = new HashMap<>();
+        for (String al: arrayList)
+        {
+            hmQtyOdinakSlov.put(al, hmQtyOdinakSlov.getOrDefault(al, 0) +1 );
+        }
+        return hmQtyOdinakSlov;
+    }
+
+    public static void main(String[] args)
+    {
         // TODO:: написать статический метод, который принимает на вход мапу (например, firstTaskMap) и город (например, city),
         //  формирует и возвращает список (List) логинов, которые соответствуют переданному городу - СДЕЛАНО!!!
 
@@ -32,13 +43,9 @@ public class MapTask {
                 "и город (например, city), формирует и возвращает список (List) логинов, которые соответствуют " +
                 "переданному городу (city = \"Тверь\"): " + getListLoginov(firstTaskMap,city));
 
-
-
-
-
         // TODO:: дан список слов (например, words).
         //  Написать статический метод, который будет возвращать количество одинаковых слов с списке
-        //  в виде Map<String, Integer>, где String - слово и Integer - количество повторений
+        //  в виде Map<String, Integer>, где String - слово и Integer - количество повторений - СДЕЛАНО!!!
 
         List<String> words = new ArrayList<>();
         words.add("may");
@@ -50,7 +57,8 @@ public class MapTask {
         words.add("may");
         words.add("august");
         words.add("august");
-
+        System.out.println("\nвозвращать количество одинаковых слов с списке в виде Map<String, " +
+                "Integer>: \n" + getQtyOdinakSlov(words));
 
 
         // TODO:: дана мапа (например, customerMap).
