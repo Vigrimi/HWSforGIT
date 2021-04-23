@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class Pupil
 {
-    enum Gender
+    public enum Gender
     {
         MALE, FEMALE
     }
@@ -17,7 +17,7 @@ public class Pupil
     private LocalDate birth;
 
     // TODO: добавить все необходимые методы
-
+    public Pupil(){}
     public Pupil(UUID number, String name, Gender gender, LocalDate birth)
     {
         this.number = number;
@@ -41,7 +41,7 @@ public class Pupil
     public void setName(String name) {
         this.name = name;     }
 
-    public  Gender getGender(String name)
+    public  Gender getGender()
     {
         return gender;
     }
@@ -77,7 +77,7 @@ public class Pupil
                 "Веста","Велизар","Венедикт","Вениамин","Виктор","Вилен","Вилли","Вильгельм","Виссарион","Галина",
                 "Гаянэ","Гелена","Гелла","Генриетта","Геннадий","Генрих","Георгий","Геральд","Герасим","Герман",
                 "Глеб","Ева","Евгения","Евдокия","Денис","Джордан","Дмитрий","Дональд","Донат","Светлана","Северина",
-                "Серафима","Игорь","Измаил","Израиль","Илиан","Илларион"};
+                "Серафима","Игорь","Измаил","Иван","Илиан","Илларион"};
         int len = arrNames.length;
         Random random = new Random();
         String name = arrNames[random.nextInt(len)];
@@ -95,7 +95,8 @@ public class Pupil
     public Long getMonthsBetween()
     {
         LocalDate atNow = LocalDate.now();
-        long between = Math.abs(ChronoUnit.MONTHS.between(atNow, Pupil.getInstance().getBirth()));
+        long between = Math.abs(ChronoUnit.MONTHS.between(atNow,getBirth())); // Pupil.getInstance().getBirth()));
         return between;
     }
+
 }

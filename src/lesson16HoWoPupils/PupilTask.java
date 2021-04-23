@@ -5,6 +5,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Map;
 
 public class PupilTask
 {
@@ -18,12 +20,20 @@ public class PupilTask
         }
         System.out.println(Arrays.toString(arrPupils));
         LocalDate atNow = LocalDate.now();
+        Random random = new Random();
 
         // Используя Stream API:
-        // 1. Разделить учеников на две группы: мальчиков и девочек. Результат: Map<Pupil.Gender, ArrayList<Pupil>>
-        /*Map<String, ArrayList<Pupil>> groupsMF = Arrays.stream(arrPupils)
-                        //.collect(Collectors.toMap(Function.identity(), Collectors.toCollection(ArrayList::new), (item1, item2) -> item1 ) ;
-                .collect(Collectors.groupingBy(gender -> Pupil::getGender),Collectors.toCollection(ArrayList::new));*/
+    // 1. Разделить учеников на две группы: мальчиков и девочек.
+    // Результат: Map<Pupil.Gender, ArrayList<Pupil>> = СДЕЛАНО!!!!!!!!!
+        Map<Pupil.Gender, ArrayList<Pupil>> groupsMF = Arrays.stream(arrPupils)
+                .collect(Collectors.groupingBy(pupil -> pupil.getGender(),
+                        Collectors.toCollection(ArrayList::new)));
+        System.out.println("\n1. Разделить учеников на две группы: мальчиков и девочек.");
+        for (Map.Entry<Pupil.Gender, ArrayList<Pupil>> entry: groupsMF.entrySet())
+        {
+            System.out.println("                 " + entry.getKey()); // возвращает ключ
+            System.out.println(entry.getValue()); // возвращает значение
+        }
 
     // 2. Найти средний возраст учеников = СДЕЛАНО!!!!!!!!!
         double betweenSred = Arrays.stream(arrPupils).collect(Collectors.averagingLong(Pupil::getMonthsBetween));
@@ -44,7 +54,16 @@ public class PupilTask
         System.out.println("\n4. Найти самого взрослого ученика (" + starshiy.getBirth() +
                 "): ему " + (betweenStar / 12) + " лет и " + (betweenStar - (betweenStar / 12) * 12) + " мес." );
 
-        // 5. Собрать учеников в группы по году рождения
+    // 5. Собрать учеников в группы по году рождения = СДЕЛАНО!!!!!!!!!
+        Map<Integer, ArrayList<Pupil>> groupsBirthYear = Arrays.stream(arrPupils)
+                .collect( Collectors.groupingBy( pupil -> pupil.getBirth().getYear() ,
+                        Collectors.toCollection(ArrayList::new ) ) );
+        System.out.println("\n5. Собрать учеников в группы по году рождения: ");
+        for (Map.Entry<Integer, ArrayList<Pupil>> entry: groupsBirthYear.entrySet())
+        {
+            System.out.println("                 " + entry.getKey()); // возвращает ключ
+            System.out.println(entry.getValue()); // возвращает значение
+        }
 
         // 6. Оставить учеников с неповторяющимися именами,
         // имена и дату рождения оставшихся вывести в консоль.
@@ -54,8 +73,18 @@ public class PupilTask
 
         // 8. Вывести в консоль всех учеников в возрасте от N до M лет
 
-        // 9. Собрать в список всех учеников с именем=someName
+    // 9. Собрать в список всех учеников с именем=someName = СДЕЛАНО!!!!!!!!!
+        String[] arrNames = new String[qtyP];
+        for (int i = 0; i < qtyP; i++)
+        {
+            arrNames[i] = arrPupils[i].getName();
+        }
+        String someName = arrNames[random.nextInt(qtyP)];
+        System.out.print("\n9. Собрать в список всех учеников с именем=someName: -=" + someName + "=-: ");
+        Arrays.stream(arrPupils).filter( pupil -> pupil.getName().equalsIgnoreCase(someName) )
+                .forEach(System.out::print);
 
-        // 10. Собрать Map<Pupil.Gender, Integer>, где Pupil.Gender - пол, Integer - суммарный возраст учеников данного пола
+        // 10. Собрать Map<Pupil.Gender, Integer>,
+        // где Pupil.Gender - пол, Integer - суммарный возраст учеников данного пола
     }
 }
