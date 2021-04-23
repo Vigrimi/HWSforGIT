@@ -85,6 +85,7 @@ public class PupilTask
                 .forEach(System.out::print);
 
         // 10. Собрать Map<Pupil.Gender, Integer>,
-        // где Pupil.Gender - пол, Integer - суммарный возраст учеников данного пола
+        // где Pupil.Gender - пол,
+        // Integer - суммарный возраст учеников данного пола
     }
 }

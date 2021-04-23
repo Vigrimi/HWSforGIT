@@ -92,6 +92,7 @@ public class Pupil
                         birth
                 );
     }
+
     public Long getMonthsBetween()
     {
         LocalDate atNow = LocalDate.now();
