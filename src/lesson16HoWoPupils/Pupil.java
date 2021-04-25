@@ -68,8 +68,6 @@ public class Pupil
                 '}';
     }
 
-    //функц интерфейс
-    //@FunctionalInterface
     public static Pupil getInstance()
     {
         String[] arrNames = {"Алан","Александр","Алексей","Альберт","Альфред","Анатолий","Бернар","Богдан","Боголюб",
