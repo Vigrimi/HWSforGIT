@@ -28,8 +28,9 @@ public class MapTask {
 
     public static void main(String[] args)
     {
-        // TODO:: написать статический метод, который принимает на вход мапу (например, firstTaskMap) и город (например, city),
-        //  формирует и возвращает список (List) логинов, которые соответствуют переданному городу - СДЕЛАНО!!!
+        // TODO:: 1. написать статический метод,  - СДЕЛАНО!!!
+        //  который принимает на вход мапу (например, firstTaskMap) и город (например, city),
+        //  формирует и возвращает список (List) логинов, которые соответствуют переданному городу
 
         HashMap<String, String> firstTaskMap = new HashMap<>();
         firstTaskMap.put("qwe", "Тверь");
@@ -39,13 +40,13 @@ public class MapTask {
         firstTaskMap.put("fgh", "Магадан");
 
         String city = "Тверь";
-        System.out.println("\nнаписать статический метод, который принимает на вход мапу (например, firstTaskMap) " +
+        System.out.println("\n1. написать статический метод, который принимает на вход мапу (например, firstTaskMap) " +
                 "и город (например, city), формирует и возвращает список (List) логинов, которые соответствуют " +
                 "переданному городу (city = \"Тверь\"): " + getListLoginov(firstTaskMap,city));
 
-        // TODO:: дан список слов (например, words).
+        // TODO:: 2. дан список слов (например, words).  - СДЕЛАНО!!!
         //  Написать статический метод, который будет возвращать количество одинаковых слов с списке
-        //  в виде Map<String, Integer>, где String - слово и Integer - количество повторений - СДЕЛАНО!!!
+        //  в виде Map<String, Integer>, где String - слово и Integer - количество повторений
 
         List<String> words = new ArrayList<>();
         words.add("may");
@@ -57,11 +58,11 @@ public class MapTask {
         words.add("may");
         words.add("august");
         words.add("august");
-        System.out.println("\nвозвращать количество одинаковых слов с списке в виде Map<String, " +
+        System.out.println("\n2. возвращать количество одинаковых слов с списке в виде Map<String, " +
                 "Integer>: \n" + getQtyOdinakSlov(words));
 
 
-        // TODO:: дана мапа (например, customerMap).
+        // TODO:: 3. дана мапа (например, customerMap). - СДЕЛАНО!!!
         //  Написать статический метод, который принимает на вход аргументы int from и int to и возвращает
         //  новую мапу, в которую войдут все покупатели, возраст которых находится в диапазоне [from, to)
 
@@ -70,10 +71,22 @@ public class MapTask {
         customerMap.put("2", new Customer("Олег", "2", 17));
         customerMap.put("3", new Customer("Максим", "3", 48));
         customerMap.put("4", new Customer("Евгения", "4", 67));
+        System.out.println("\n3. дана мапа (например, customerMap).\n" + customerMap);
+        Random random = new Random();
+        int ot = (random.nextInt(17) + 17);
+        int doOo = (random.nextInt(54) + 36);
+        HashMap<String, Customer> customerMapByYear = new HashMap<>();
+        for (Map.Entry<String, Customer> entry: customerMap.entrySet())
+        {
+            if( (entry.getValue().getAge() >= ot) &&
+                    (entry.getValue().getAge() < doOo) )
+                customerMapByYear.put(entry.getKey(), entry.getValue());
+        }
+        System.out.println("новую мапу, в которую войдут все покупатели, возраст которых находится в " +
+                "диапазоне [from{" + ot + "}, to){" + doOo + "}: \n" + customerMapByYear);
 
 
-
-        // TODO:: Задания по тексту (text). На каждый пункт - минимум один метод:
+        // TODO:: 4... Задания по тексту (text). На каждый пункт - минимум один метод:
         //  1. написать метод, принимающий на вход слово и возвращающий частоту
         //  встречаемости данного слова в тексте
         //  2. написать метод, который собирает все слова в группы

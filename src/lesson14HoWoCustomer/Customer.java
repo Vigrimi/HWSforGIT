@@ -36,4 +36,13 @@ public class Customer {
     }
 
     // TODO: переопределить все необходимые методы
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", uuid='" + uuid + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
