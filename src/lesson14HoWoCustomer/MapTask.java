@@ -1,6 +1,7 @@
 package lesson14HoWoCustomer;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MapTask {
     public static ArrayList<String> getListLoginov (HashMap<String, String> hashMap, String cityName)
@@ -89,13 +90,6 @@ public class MapTask {
         // TODO:: 4... Задания по тексту (text). На каждый пункт - минимум один метод:
         //  1. написать метод, принимающий на вход слово и возвращающий частоту
         //  встречаемости данного слова в тексте
-        //  2. написать метод, который собирает все слова в группы
-        //  по количеству букв:
-        //  например, в одну группу попадут слова:
-        //  3 - [the, war, jar, get, met...],
-        //  в другую 2 - [on, up, no, of...] и тд
-        //  результат сохранить в Map<Integer, ArrayList>
-        //  3. написать метод, который выводит в консоль топ 10 самых частых слов
         //  4. вывести частоту встречаемости букв английского алфавита в данном тексте. Вывести в процентах для каждой буквы
 
         // в тексте содержатся только буквы и пробельные символы
@@ -106,6 +100,56 @@ public class MapTask {
                 "uncover many web sites still uncover in their infancy Various versions uncover have evolved over the years uncover sometimes by accident" +
                 " sometimes on purpose injected humour and the like";
 
+        ArrayList<String> textAL = new ArrayList<>();
+        Collections.addAll(textAL, text.toLowerCase().split(" "));
+     //   System.out.println("4... " + textAL);
+        System.out.println("\n4... Задания по тексту (text). На каждый пункт - минимум один метод: " +
+                "\n\n1. написать метод, принимающий на вход слово и возвращающий частоту встречаемости данного слова " +
+                "в тексте \n" + getQtyOdinakSlov(textAL));
+
+        //  2. написать метод, который собирает все слова в группы по количеству букв: например, в одну группу попадут слова:
+        //  3 - [the, war, jar, get, met...], в другую 2 - [on, up, no, of...] и тд
+        //  результат сохранить в Map<Integer, ArrayList>
+
+        int maxLetters = Integer.MIN_VALUE;
+        for (String al: textAL )
+        {
+            if (al.length() > maxLetters) maxLetters = al.length();
+        }
+        //System.out.println(maxLetters);
+        HashMap<Integer, ArrayList> num42 = new HashMap<>();
+        for (int i = 1; i <= maxLetters; i++)
+        {
+            num42.put( i , getValueMap42(textAL,i) );
+        }
+        System.out.println("\n2. написать метод, который собирает все слова в группы по количеству букв: ");
+        for (Map.Entry<Integer, ArrayList> entry: num42.entrySet())
+        {
+            System.out.println("       " + entry.getKey()); // возвращает ключ
+            System.out.println(entry.getValue()); // возвращает значение
+        }
+
+        //  3. написать метод, который выводит в консоль топ 10 самых частых слов - ЧТО-ТО ПОКА НЕ РАБОТАЕТ(((
+        System.out.println("3. написать метод, который выводит в консоль топ 10 самых частых слов:");
+        HashMap<String, Integer> num43 = getQtyOdinakSlov(textAL);
+        System.out.println(
+        /*num43 =*/ num43.entrySet().stream().sorted( (entry1,entry2) -> entry2.getValue().compareTo(entry1.getValue()) ).limit(10)
+                /*.collect(
+                        Collectors.toMap(
+                                Map.Entry::getKey,Map.Entry::getValue
+                        ))*/);
+        System.out.println(num43);
+
+
+    }
+    public static ArrayList<String> getValueMap42(ArrayList<String> al, int max)
+    {
+        ArrayList<String> valueMap42 = new ArrayList<>();
+                    for (String a : al)
+                    {
+                        if (a.length() == max) valueMap42.add(a);
+                    }
+        return valueMap42;
     }
 
 }
