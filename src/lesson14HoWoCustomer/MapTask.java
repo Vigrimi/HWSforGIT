@@ -1,7 +1,6 @@
 package lesson14HoWoCustomer;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class MapTask {
     public static ArrayList<String> getListLoginov (HashMap<String, String> hashMap, String cityName)
@@ -88,9 +87,8 @@ public class MapTask {
 
 
         // TODO:: 4... Задания по тексту (text). На каждый пункт - минимум один метод:
-        //  1. написать метод, принимающий на вход слово и возвращающий частоту
+        //  - СДЕЛАНО!!! 1. написать метод, принимающий на вход слово и возвращающий частоту
         //  встречаемости данного слова в тексте
-        //  4. вывести частоту встречаемости букв английского алфавита в данном тексте. Вывести в процентах для каждой буквы
 
         // в тексте содержатся только буквы и пробельные символы
         String text = "It is a uncover long established fact that a reader will be distracted uncover by the readable content of a page " +
@@ -104,10 +102,10 @@ public class MapTask {
         Collections.addAll(textAL, text.toLowerCase().split(" "));
      //   System.out.println("4... " + textAL);
         System.out.println("\n4... Задания по тексту (text). На каждый пункт - минимум один метод: " +
-                "\n\n1. написать метод, принимающий на вход слово и возвращающий частоту встречаемости данного слова " +
+                "\n\n4-1. написать метод, принимающий на вход слово и возвращающий частоту встречаемости данного слова " +
                 "в тексте \n" + getQtyOdinakSlov(textAL));
 
-        //  2. написать метод, который собирает все слова в группы по количеству букв: например, в одну группу попадут слова:
+        //  - СДЕЛАНО!!! 2. написать метод, который собирает все слова в группы по количеству букв: например, в одну группу попадут слова:
         //  3 - [the, war, jar, get, met...], в другую 2 - [on, up, no, of...] и тд
         //  результат сохранить в Map<Integer, ArrayList>
 
@@ -122,24 +120,80 @@ public class MapTask {
         {
             num42.put( i , getValueMap42(textAL,i) );
         }
-        System.out.println("\n2. написать метод, который собирает все слова в группы по количеству букв: ");
+        System.out.println("\n4-2. написать метод, который собирает все слова в группы по количеству букв: ");
         for (Map.Entry<Integer, ArrayList> entry: num42.entrySet())
         {
             System.out.println("       " + entry.getKey()); // возвращает ключ
             System.out.println(entry.getValue()); // возвращает значение
         }
 
-        //  3. написать метод, который выводит в консоль топ 10 самых частых слов - ЧТО-ТО ПОКА НЕ РАБОТАЕТ(((
-        System.out.println("3. написать метод, который выводит в консоль топ 10 самых частых слов:");
+        // - СДЕЛАНО!!!  3. написать метод, который выводит в консоль топ 10 самых частых слов - ЧТО-ТО ПОКА НЕ РАБОТАЕТ(((
+        System.out.println("\n4-3. написать метод, который выводит в консоль топ 10 самых частых слов:");
         HashMap<String, Integer> num43 = getQtyOdinakSlov(textAL);
-        System.out.println(
-        /*num43 =*/ num43.entrySet().stream().sorted( (entry1,entry2) -> entry2.getValue().compareTo(entry1.getValue()) ).limit(10)
-                /*.collect(
-                        Collectors.toMap(
-                                Map.Entry::getKey,Map.Entry::getValue
-                        ))*/);
-        System.out.println(num43);
+        int sizeMap = num43.size();
+        TreeMap<Integer,String> num43TreeMap = new TreeMap<>();
+        for (int i = 1; i <= sizeMap; i++)
+        {
+            int j = 0;
+        for (Map.Entry<String, Integer> entry1: num43.entrySet() )
+            {
+                if (entry1.getValue() == i)
+                {
+                 num43TreeMap.put( (entry1.getValue() * 100 + j ), num43TreeMap.getOrDefault(entry1.getValue()
+                                , "") + entry1.getKey() ); // + ", ");
+                    j++;
+                }
+            }
+        }
+        int max = Integer.MIN_VALUE;
+        for (Map.Entry<Integer, String> entry1: num43TreeMap.entrySet() )
+        {
+            if ( entry1.getKey() > max ) max = entry1.getKey();
+        }
+        int sizeMapTree = num43TreeMap.size();
+        int qtySlov = 0;
+        Integer max1 = max;
+        for (int i = 0; i < max; i++)
+        {
+            if (qtySlov == 10) break;
+            for (Map.Entry<Integer, String> entry1: num43TreeMap.entrySet() )
+            {
+                    if (entry1.getKey().compareTo(max1) == 0) //.equals(max1))
+                    {
+                        System.out.println( (qtySlov + 1) + ": \"" + entry1.getValue() + "\" (" + (entry1.getKey() / 100)
+                                + " раз) ");
+                        qtySlov++;
+                    }
+            }
+            max1--;
+        }
 
+    // - СДЕЛАНО!!!  4. вывести частоту встречаемости букв английского алфавита в данном тексте. Вывести в процентах для каждой буквы
+        System.out.println("\n4-4. вывести частоту встречаемости букв английского алфавита в данном тексте. Вывести в процентах для каждой буквы: ");
+        String text1 = text.toLowerCase().replaceAll(" ","");
+        text1 = text1.replaceAll("-","");
+        char[] alText = text1.toCharArray();
+    //    System.out.println(Arrays.toString(alText));
+        TreeMap<Character,Integer> num44TreeMap = new TreeMap<>();
+        for (char ch: alText )
+        {
+            num44TreeMap.put( ch , num44TreeMap.getOrDefault(ch,0) +1 );
+        }
+        System.out.println(num44TreeMap);
+        double totSum = 0, w = 0, s = 0;
+        for (Map.Entry<Character,Integer> entry2: num44TreeMap.entrySet() )
+        {
+            totSum += entry2.getValue();
+        }
+        //System.out.println(totSum);
+        for (Map.Entry<Character,Integer> entry2: num44TreeMap.entrySet() )
+        {
+            w = (entry2.getValue() * 100 / totSum);
+            System.out.println("-частота встречаемости буквы '" + entry2.getKey() + "' составляет = " +
+                    w + " процентов.");
+            s += w;
+        }
+        System.out.println("Проверка процентов: " + s);
 
     }
     public static ArrayList<String> getValueMap42(ArrayList<String> al, int max)
