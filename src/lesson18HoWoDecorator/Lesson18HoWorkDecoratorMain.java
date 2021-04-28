@@ -17,6 +17,9 @@ public class Lesson18HoWorkDecoratorMain
         System.out.println("\nИз файла с текстом с компа в массив байты bytes: " + Arrays.toString(bytes));
         byte[] encodeBytes = encode(bytes,pKey);
         System.out.println("\nмассив байты закодирован ключом encodeBytes: " + Arrays.toString(encodeBytes));
+        WritoToFile writoToFile2 = new WritoToFile(new File("lesson18encode.txt"));
+        writoToFile2.writeToFile(encodeBytes);
+
         byte[] decodeBytes = decode(encodeBytes,pKey);
         System.out.println("\nмассив закодированые байты ключом раскодировали в " +
                 "decodeBytes: " + Arrays.toString(decodeBytes));
