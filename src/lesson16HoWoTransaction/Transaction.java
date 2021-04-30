@@ -1,5 +1,7 @@
 package lesson16HoWoTransaction;
 
+import java.util.Locale;
+
 public class Transaction
 {
     private String uuid;
@@ -50,7 +52,7 @@ public class Transaction
         return "Transaction{" +
                 "uuid='" + uuid + '\'' +
                 ", sum=" + sum +
-                ", account=" + /*getAccountToString() +*/ account +
+                ", account=" + account +
                 '}';
     }
 }

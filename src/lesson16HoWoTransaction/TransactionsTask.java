@@ -23,7 +23,7 @@ public class TransactionsTask
         Transaction transaction7 = new Transaction("c38209a7-dbb7-47ee-b162-1953e29eab94", 3400, account3);
 
         Transaction[] transactions = {transaction1,transaction2,transaction3,transaction4,transaction5,transaction6,transaction7};
-        System.out.println("123... " + Arrays.toString(transactions));
+
         // дано:
         Stream<Transaction> transactionStream = Stream.of(transaction1, transaction2, transaction3,
                 transaction4, transaction5, transaction6, transaction7);
@@ -39,26 +39,17 @@ public class TransactionsTask
                 ));
         System.out.println(aa);
 
-        // TODO: 2. найти сумму транзакций по каждому аккаунту
+        // TODO: 2. найти сумму транзакций по каждому аккаунту - СДЕЛАНО!!!
         System.out.println("\n2. найти сумму транзакций по каждому аккаунту: ");
-//        Stream<Transaction> transactionStream1 = Stream.of(transaction1, transaction2, transaction3,
-//                transaction4, transaction5, transaction6, transaction7);
         Map<String,Long> bb = Arrays.stream(transactions).collect(
                 Collectors.groupingBy( transaction -> transaction.getAccountToString() ,
                         Collectors.summingLong( transaction -> transaction.getSum() ))
-//                        .toMap(
-//                        transaction -> transaction.getAccount(),
-//                        transaction -> transaction.getSum(),
-//                        (item1,item2) -> item1 + item2 )
                 );
-        System.out.println(transaction1.getAccountToString());
-        System.out.println(transaction1.getAccount());
+
         for (Map.Entry<String,Long> entry: bb.entrySet())
         {
             System.out.println("                 " + entry.getKey()); // возвращает ключ
             System.out.println(entry.getValue()); // возвращает значение
         }
-
-
     }
 }
