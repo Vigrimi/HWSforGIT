@@ -9,10 +9,19 @@ public class SimpleMessageHoWo implements Serializable
     private String sender;
     private String text;
     private LocalDateTime dateTime;
+    private byte[] data;
 
-    public SimpleMessageHoWo(String sender, String text, LocalDateTime dateTime) {
+    public SimpleMessageHoWo(String sender, String text, LocalDateTime dateTime)
+    {
         this.sender = sender;
         this.text = text;
+        this.dateTime = dateTime;
+    }
+    public SimpleMessageHoWo(String sender, String text, byte[] data, LocalDateTime dateTime) // for image file
+    {
+        this.sender = sender;
+        this.text = text;
+        this.data = data;
         this.dateTime = dateTime;
     }
 
@@ -40,6 +49,14 @@ public class SimpleMessageHoWo implements Serializable
         return dateTime;
     }
 
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+
     @Override
     public String toString() {
         return "SimpleMessage{" +
@@ -52,6 +69,10 @@ public class SimpleMessageHoWo implements Serializable
     public static SimpleMessageHoWo getMessage(String sender, String text, LocalDateTime dateTime)
     {
          return new SimpleMessageHoWo(sender, text, dateTime);
+    }
+    public static SimpleMessageHoWo getMessageBytes(String sender, String text, byte[] data, LocalDateTime dateTime)
+    {
+        return new SimpleMessageHoWo(sender, text, data, dateTime);
     }
 
     public static SimpleMessageHoWo getServerMessage(String sender, String text, LocalDateTime dateTime)

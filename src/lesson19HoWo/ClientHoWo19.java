@@ -41,8 +41,8 @@ public class ClientHoWo19
                         LocalDateTime.now() ) ); // вызываем отправку
             } else if ("image".equalsIgnoreCase(text)) //передача изображения(й) от клиента на сервер
             {
-                System.out.println("передаём на сервер файл lsn19howo.jpg");
-                ImageRSHoWo19 imageRS = new ImageRSHoWo19(new File("lsn19howo.jpg"));
+                System.out.println("передаём на сервер поток байтов от файла lsn19howoPng.png");
+                ImageRSHoWo19 imageRS = new ImageRSHoWo19(new File("lsn19howoPng.png"));
                 byte[] bytes = new byte[0];
                 try
                 {
@@ -51,14 +51,9 @@ public class ClientHoWo19
                 {
                     e.printStackTrace();
                 }
-                /*String textImgBytes = "";
-                for (int i = 0; i < bytes.length; i++)
-                {
-                    textImgBytes = bytes[i] + ",";
-                }*/
-                sendAndPrintMessage(SimpleMessageHoWo.getMessage(userName + "SendAnImage",
-                        //textImgBytes,
-                        Arrays.toString(bytes),
+                sendAndPrintMessage(SimpleMessageHoWo.getMessageBytes(userName,
+                        text,
+                        bytes,
                         LocalDateTime.now())); // вызываем отправку
             }
             else sendAndPrintMessage(SimpleMessageHoWo.getMessage(userName,text, LocalDateTime.now())); // вызываем отправку
