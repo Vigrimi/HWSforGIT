@@ -1,8 +1,10 @@
 package lesson19HoWo;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -35,14 +37,26 @@ public class ServerHoWo
                 String countPodklyuchString = countPodklyuch + "";
                 LocalDateTime messageOnServerDateTime = message.getDateTime();
 
-                if (message.getText().equalsIgnoreCase("ping"))
+                if (message.getSender().contains("SendAnImage"))  // принимаем картинку
                 {
-                    DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                    DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("HH:mm:ss.ms");
-                    String ldStr = messageOnServerDateTime.format(dtf1) + "T" + messageOnServerDateTime.format(dtf2);
-                    //LocalDateTime parseDate = LocalDateTime.parse(ldStr);
+                    //TODO
+                    //... дописать приём байтов картинки и сохранение картинки в файл на сервере
+                    String textBytesImgFmClient = message.getText();
+                    byte[] data = new byte[0];
+                    data = textBytesImgFmClient.getBytes(); // (StandardCharsets.UTF_8);
+                    ImageRSHoWo19 imageRSHoWo19FmServer = new ImageRSHoWo19(new File("nEWlsn19howo.jpg"));
+                    imageRSHoWo19FmServer.writeToFile(data);
+                    connection.sendMessage(SimpleMessageHoWo.getServerMessage("server\n","была введена " +
+                                    "команда \"image\" - сервер принял файл и удачно его себе сохранил. Спасибо! " +
+                                    "ЗЫ надеюсь в нём нет вирусов :ор",
+                            LocalDateTime.now())); //отправка сообщения
+                }
 
-                    connection.sendMessage(SimpleMessageHoWo.getServerMessage("serverT",ldStr,
+                if (message.getText().contains("ping"))  //equalsIgnoreCase("ping"))
+                {
+                    String text1 = message.getText();
+                    String text2 = text1.substring(4, text1.length() );
+                    connection.sendMessage(SimpleMessageHoWo.getServerMessage("serverT",text2,
                             LocalDateTime.now())); //отправка сообщения
                 }
 

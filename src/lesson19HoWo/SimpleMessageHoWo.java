@@ -2,6 +2,7 @@ package lesson19HoWo;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class SimpleMessageHoWo implements Serializable
 {
@@ -60,12 +61,18 @@ public class SimpleMessageHoWo implements Serializable
                 "доступных команд; \n\u2708 count - пользователь хочет узнать количество клиентов, которые " +
                 "подключались к серверу; \n\u2708 ping - пользователь хочет узнать время за которое сообщение " +
                 "доходит до сервера и возвращается обратно; \n\u2708 exit - пользователь хочет выйти из " +
-                "программы (завершение программы); \n\u2708 file - передача изображения(й) от клиента на сервер.";
+                "программы (завершение программы); \n\u2708 image - передача изображения(й) от клиента на сервер.";
         if (text.equalsIgnoreCase("help")) return new SimpleMessageHoWo(sender, text1, dateTime);
-        /*if (sender.equalsIgnoreCase("serverT"))
+      //  else if ()
+        if (sender.equalsIgnoreCase("serverT"))
         {
-            !!!дописать про время!!!!
-        }*/
+            LocalDateTime parseDate = LocalDateTime.parse(text);
+            return new SimpleMessageHoWo(sender,
+                    "\nвремя за которое сообщение доходит до сервера и возвращается обратно = " +
+                            ChronoUnit.NANOS.between(parseDate,dateTime)
+                            + " наносекунд.",
+                            dateTime);
+        }
         else return new SimpleMessageHoWo(sender, text, dateTime);
     }
 }

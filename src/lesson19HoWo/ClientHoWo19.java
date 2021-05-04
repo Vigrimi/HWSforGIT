@@ -1,9 +1,11 @@
 package lesson19HoWo;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ClientHoWo19
@@ -29,10 +31,37 @@ public class ClientHoWo19
                     "доступных команд; \n\u2708 count - пользователь хочет узнать количество клиентов, которые " +
                     "подключались к серверу; \n\u2708 ping - пользователь хочет узнать время за которое сообщение " +
                     "доходит до сервера и возвращается обратно; \n\u2708 exit - пользователь хочет выйти из " +
-                    "программы (завершение программы); \n\u2708 file - передача изображения(й) от клиента на сервер.");
+                    "программы (завершение программы); \n\u2708 image - передача изображения(й) от клиента на сервер.");
             text = scanner.nextLine();
             if("exit".equalsIgnoreCase(text)) break;
-            sendAndPrintMessage(SimpleMessageHoWo.getMessage(userName,text, LocalDateTime.now())); // вызываем отправку
+            else if ("ping".equalsIgnoreCase(text))
+            {
+                sendAndPrintMessage(SimpleMessageHoWo.getMessage(userName,
+                        "ping" + LocalDateTime.now(),
+                        LocalDateTime.now() ) ); // вызываем отправку
+            } else if ("image".equalsIgnoreCase(text)) //передача изображения(й) от клиента на сервер
+            {
+                System.out.println("передаём на сервер файл lsn19howo.jpg");
+                ImageRSHoWo19 imageRS = new ImageRSHoWo19(new File("lsn19howo.jpg"));
+                byte[] bytes = new byte[0];
+                try
+                {
+                    bytes = imageRS.readFromFile();
+                } catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+                /*String textImgBytes = "";
+                for (int i = 0; i < bytes.length; i++)
+                {
+                    textImgBytes = bytes[i] + ",";
+                }*/
+                sendAndPrintMessage(SimpleMessageHoWo.getMessage(userName + "SendAnImage",
+                        //textImgBytes,
+                        Arrays.toString(bytes),
+                        LocalDateTime.now())); // вызываем отправку
+            }
+            else sendAndPrintMessage(SimpleMessageHoWo.getMessage(userName,text, LocalDateTime.now())); // вызываем отправку
         }
     }
 
