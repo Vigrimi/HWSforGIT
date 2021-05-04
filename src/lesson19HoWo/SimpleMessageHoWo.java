@@ -88,11 +88,12 @@ public class SimpleMessageHoWo implements Serializable
         if (sender.equalsIgnoreCase("serverT"))
         {
             LocalDateTime parseDate = LocalDateTime.parse(text);
+            LocalDateTime recieveTime = LocalDateTime.now();
             return new SimpleMessageHoWo(sender,
                     "\nвремя за которое сообщение доходит до сервера и возвращается обратно = " +
-                            ChronoUnit.NANOS.between(parseDate,dateTime)
+                            ChronoUnit.NANOS.between(parseDate,recieveTime)
                             + " наносекунд.",
-                            dateTime);
+                    recieveTime);
         }
         else return new SimpleMessageHoWo(sender, text, dateTime);
     }
