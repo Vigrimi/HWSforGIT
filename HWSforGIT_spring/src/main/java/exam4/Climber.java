@@ -1,17 +1,56 @@
 package exam4;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.stereotype.Component;
+
+import javax.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
 
+@Entity
+@Table(name = "tb_climbers_exam4")
 public class Climber
 {
+    @Id // первичный ключ
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // автоинкремент - значения увеличиваются на единицу
+    private int id;
+
     //свойства их называют иногда поля или атрибуты
+    @Getter
+    @Setter
+    @Column(nullable = false)
     private String fullName;
+
+    @Getter
+    @Setter
+    @Column(nullable = false)
     private int age;
+
+    @Getter
+    @Setter
+    @Column(nullable = false)
     private String email;
+
+    @Getter
+    @Setter
+    @Column(nullable = false)
     private UUID uuid; // уникальный айди,генерирует уник-е айди
 
-    //методы проверки на валидность вводимых данных - грубо говоря инструкции
+    public Climber() {}
+
+    public Climber(String fullName, int age, String email, UUID uuid) {
+        this.fullName = fullName;
+        this.age = age;
+        this.email = email;
+        this.uuid = uuid;
+    }
+
+    /*public void setUuid() {
+        this.uuid = UUID.randomUUID();
+    }*/
+
+ /*   //методы проверки на валидность вводимых данных - грубо говоря инструкции
     void setFullName(String fullName) // это метод устанавливающий свойства - также наз-ся "сеттер"
     {
         if (fullName == null || fullName.length() < 3) throw new IllegalArgumentException("значение name < 3");
@@ -32,9 +71,7 @@ public class Climber
         this.email = email;
     }
 
-    public void setUuid() {
-        this.uuid = UUID.randomUUID();
-    }
+
 
     // получение - возврат свойств в мэйн
     public String getFullName() // возвращаем Стринг
@@ -53,7 +90,7 @@ public class Climber
 
     public UUID getUuid() {
         return uuid;
-    }
+    }*/
 
     @Override // переопр клон // не доделал - надо сделать
     protected Object clone() throws CloneNotSupportedException {

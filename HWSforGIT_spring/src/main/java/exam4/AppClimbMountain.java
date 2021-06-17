@@ -1,57 +1,26 @@
 package exam4;
 
+import com.vigrimi.HWSforGITspring.HwSforGitSpringApplication;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.util.UUID;
 
+@SpringBootApplication
 public class AppClimbMountain
 {
-    // com.ifmo.jjd
-    // com.profi.jjd
     public static void main(String[] args)
     {
+//        Climber climber1 = new Climber("climber1",21,"climber1@email.com", UUID.randomUUID());
+//        Climber climber2 = new Climber("climber2",22,"climber2@email.com", UUID.randomUUID());
+//        Climber climber3 = new Climber("climber3",23,"climber3@email.com", UUID.randomUUID());
+//        Climber climber4 = new Climber("climber4",24,"climber4@email.com", UUID.randomUUID());
+//        Climber climber5 = new Climber("climber5",25,"climber5@email.com", UUID.randomUUID());
+//        Climber climber6 = new Climber("climber6",26,"climber6@email.com", UUID.randomUUID());
 
-        Climber climber1 = new Climber();
-        // обращение к свойствам объекта
-//        climber1.fullName = "Ivan Grigoriev"; // присвоили имя
-//        climber1.age = 20;
-//        climber1.email = "ivan@cvb.com";
-//        climber1.uuid = UUID.randomUUID();
-        // вызов методов
-        climber1.setFullName("Ivan Grigoriev"); //вызываем метод и в него сразу передаём значения,
-        //если он готов принять значения - для этого в круглых скобках в Клаймбер должно быть указано
-        //что принимать и какого типа
-        climber1.setAge(34);
-        climber1.setEmail("ivan@cvb.com");
-        climber1.setUuid();
+        SpringApplication.run(AppClimbMountain.class, args);
 
-
-        Climber climber2 = new Climber();
-        // обращение к свойствам объекта
-//        climber2.fullName = "Elena Mikhaylova"; // присвоили имя
-//        climber2.age = 21;
-//        climber2.email = "elena@cvb.com";
-//        climber2.uuid = UUID.randomUUID();
-        climber2.setFullName("Elena Mikhaylova"); // так мы вводим данные и сразу проверяем их на валидность
-        // по инструкциям в классе Climber
-        climber2.setAge(25);
-        climber2.setEmail("elena@cvb.com");
-        climber2.setUuid();
-
-        //получить значение свойства
-        int elenaAge = climber2.getAge();
-
-        System.out.println(climber1);
-        System.out.println(climber2);
-
-        Mountain everest = new Mountain("Everest", 8_000); //создали объект, создали экземпляр класса
-        Mountain elbrus = new Mountain("Elbrus", 6_000); // вызов конструктора
-
-        Mountain defaultMountain = new Mountain(); // см в классе Маунтейн стр 9
-
-        System.out.println(everest);
-        System.out.println(elbrus);
-
-//        ClimbingGroup f = new ClimbingGroup(everest, 5);
-//        System.out.println(f);
+        System.out.println("ok");
 
     }
 }
