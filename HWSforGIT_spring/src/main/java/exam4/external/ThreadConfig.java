@@ -1,4 +1,4 @@
-package exam4;
+package exam4.external;
 
 import lombok.Getter;
 import lombok.Setter;

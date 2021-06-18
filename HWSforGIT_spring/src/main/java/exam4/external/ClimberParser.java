@@ -1,9 +1,11 @@
-package exam4;
+package exam4.external;
 
+import exam4.Climber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityManager;
 import java.util.UUID;
 
 @Component
@@ -12,11 +14,15 @@ import java.util.UUID;
 // новый объект
 public class ClimberParser implements Runnable
 {
+    private EntityManager manager; // ссылка на менеджер сущности
     private ClimberRepository repository; // если нужен доступ к репозиторию
 
+    public ClimberParser(){}
+
     @Autowired
-    public ClimberParser(ClimberRepository repository) {
+    public ClimberParser(ClimberRepository repository, EntityManager manager) {
         this.repository = repository;
+        this.manager = manager;
     }
 
     @Override
@@ -24,6 +30,11 @@ public class ClimberParser implements Runnable
     {
             //CourseParser courseParser = context.getBean(CourseParser.class); // создаём ранэбл объект потока
         Climber climber1 = new Climber("climber1",21,"climber1@email.com", UUID.randomUUID());
-        repository.save(climber1);
+
+        manager.getTransaction().begin();
+        manager.persist(climber1);
+        manager.getTransaction().commit();
+
+        //repository.save(climber1);
     }
 }

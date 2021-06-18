@@ -1,0 +1,41 @@
+2. составить запросы для получения: 2.1 всех гор[
+Гора {id= 1, name='mountain1', height=1002}, 
+Гора {id= 2, name='mountain2', height=2003}, 
+Гора {id= 3, name='mountain3', height=3004}, 
+Гора {id= 4, name='mountain4', height=4005}, 
+Гора {id= 5, name='mountain5', height=5006}, 
+Гора {id= 6, name='mountain6', height=6007}, 
+Гора {id= 7, name='mountain7', height=7008}]
+#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$
+->2. составить запросы для получения: 2.2 гор с высотой от min(3_000) до max(7_000): [
+Гора {id= 3, name='mountain3', height=3004}, 
+Гора {id= 4, name='mountain4', height=4005}, 
+Гора {id= 5, name='mountain5', height=5006}, 
+Гора {id= 6, name='mountain6', height=6007}]
+#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$
+->2. составить запросы для получения: 2.3 групп, которые еще не начали восхождения на горы относительно текущей даты: [
+ClimbingGroup{id= 1, mountain=mountain1, 1002, 
+climbers=climber1, 21, climber1@email.com, c7ff10dd-8738-4e6c-a484-34087dc6af49; 
+climber3, 23, climber3@email.com, 73d309cb-cc10-43b6-b46f-228d5c6e1a16; 
+climber2, 22, climber2@email.com, 6e7ceeb6-cf99-4dd6-9565-e0741e2d660d; 
+climber5, 25, climber5@email.com, a2566166-d04c-4203-8474-55642bce814a; 
+, 
+LocalDateTime startClimbing= 2021-12-25T04:55:47.973011300}
+, 
+ClimbingGroup{id= 4, mountain=mountain7, 7008, 
+climbers=climber4, 24, climber4@email.com, 4f6a07fc-d3db-4d18-8293-3f25b0c340ed; 
+climber3, 23, climber3@email.com, 73d309cb-cc10-43b6-b46f-228d5c6e1a16; 
+climber2, 22, climber2@email.com, 6e7ceeb6-cf99-4dd6-9565-e0741e2d660d; 
+climber6, 26, climber6@email.com, 255a0f89-748e-44a1-9404-9750432ed52b; 
+, 
+LocalDateTime startClimbing= 2021-11-24T03:55:47.975011400}
+]
+#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$
+->2. составить запросы для получения: 2.4 альпиниста по имени (climber3) и email(climber3@email.com): 
+Climber{fullName='climber3', age=23, email='climber3@email.com', uuid=73d309cb-cc10-43b6-b46f-228d5c6e1a16}
+
+#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$
+->2. составить запросы для получения: 2.5 гору по названию(mountain4): 
+Гора {id= 4, name='mountain4', height=4005}
+#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$#$
+->

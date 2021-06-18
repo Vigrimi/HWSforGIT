@@ -1,67 +1,71 @@
 package exam4;
 
-import java.util.Arrays;
-import java.util.Objects; // класс Обжектс почти как и класс Arrays
+import lombok.Getter;
+import lombok.Setter;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "exam4_tb_climbing_groups")
+@Getter
 public class ClimbingGroup
 {
-    private Mountain mountain; //ссылка на какаую-то гору
-    private Climber[] climbers; //создали массив альпинистов кот-е пойдут на гору
+    @Setter
+    @Id // первичный ключ
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // автоинкремент - значения увеличиваются на единицу
+    private int id;
 
-    public ClimbingGroup(Mountain mountain, int climberCount) // конструктор
+    @Column(name = "mountain_name_height",nullable = false,length = 1000)
+    private String mountainNameHeight;
+
+    @Column(name = "climbing_group",nullable = false,length = 100000)
+    private String climbingGroup;
+
+    @Column(name = "start_climbing",nullable = false)
+    private LocalDateTime startClimbing; // свойство start (дата и время восхождения на гору)
+
+    public ClimbingGroup(String mountainNameHeight, String climbingGroup, LocalDateTime startClimbing) {
+        this.mountainNameHeight = mountainNameHeight;
+        this.climbingGroup = climbingGroup;
+        this.startClimbing = startClimbing;
+    }
+    public ClimbingGroup(){}
+
+    public void setMountainNameHeight(Mountain mountain)
     {
-        this.mountain = Objects.requireNonNull(mountain, "bad mountain name = null"); // проверка на null, если НАЛ, то сразу эксепшн
-        climbers = new Climber[climberCount]; //массиву задали кол-во альпинистов
+        this.mountainNameHeight = mountain.getName() + ", " + mountain.getHeight();
     }
 
-    public void addClimber(Climber climber) // принимать ссылку на какого-то альпиниста
+    public void setClimbingGroup(Climber[] climbers)
     {
-        Objects.requireNonNull(climber, "climber must be not null");
+        String s = "";
         for (int i = 0; i < climbers.length; i++)
         {
-            if (climbers[i] == null)
-            {
-                climbers[i] = climber;
-                return; // в void вместо break для выхода исп-ся ретурн
-            }
+            s = s + climbers[i].getFullName() + ", " + climbers[i].getAge() + ", " + climbers[i].getEmail()
+                    + ", " + climbers[i].getUuid() + "; \n";
         }
-        System.out.println("Мест нет"); // нет НАЛов в массиве, значит некуда записывать нового альпиниста
-
-    }
-    ClimbingGroup first = new ClimbingGroup(mountain,3);
-    ClimbingGroup second = first.clone();
-    boolean vb = first.equals(second);
-
-    @Override // переопр клон
-    public ClimbingGroup clone() { // throws CloneNotSupportedException {
-        Mountain copyM = this.mountain.clone(); // переопределеить метод клон в маунтэйн и тогда красное пропадёт
-        ClimbingGroup copyGr = new ClimbingGroup(copyM,climbers.length);
-        copyGr.climbers = climbers.clone();
-        return copyGr;
+        this.climbingGroup = s;
     }
 
-    @Override // переопр иквэлз
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ClimbingGroup)) return false;
-        ClimbingGroup that = (ClimbingGroup) o;
-        return Objects.equals(mountain, that.mountain) && Arrays.equals(climbers, that.climbers); // так как клаймберс массив
-        // то надо переопределять иквэлз ещё и в классе клаймбер для массива клаймбер
-    }
+    public void setStartClimbing(long a)
+    {
+        if(a <= 3)
+        {
+            this.startClimbing = LocalDateTime.now().minusMonths(a).minusDays(a).minusHours(a);
+        } else
+        {
+            this.startClimbing = LocalDateTime.now().plusMonths(a).plusDays(a).plusHours(a);
+        }
 
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(mountain);
-        result = 31 * result + Arrays.hashCode(climbers);
-        return result;
     }
 
     @Override
     public String toString() {
-        return "ClimbingGroup{" +
-                "mountain=" + mountain +
-                ", climbers=" + Arrays.toString(climbers) +
-                '}';
+        return "\nClimbingGroup{" +
+                "id= " + id +
+                ", mountain=" + mountainNameHeight +
+                ", \nclimbers=" + climbingGroup +
+                ", \nLocalDateTime startClimbing= " + startClimbing +
+                "}\n";
     }
 }
